@@ -1,0 +1,1916 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEXORA 2026 | Pemilihan Ketua OSIS dan MPK SMAN 80 Jakarta</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Rye&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Firebase SDK Realtime Database -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            desert: {
+              950: '#120a04',
+              900: '#1d1007',
+              850: '#29170a',
+              800: '#381f0d',
+              750: '#4a2912',
+              700: '#5e3417',
+              600: '#8a4c22',
+              500: '#ba672e',
+              400: '#e0843d',
+              300: '#f3aa63',
+              200: '#fbd09b',
+              100: '#fef1df',
+              50: '#fffaf4',
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            western: ['Rye', 'serif'],
+            display: ['Cinzel', 'serif']
+          },
+          boxShadow: {
+            'western-glow': '0 0 35px -5px rgba(230, 161, 43, 0.35)',
+            'saloon': '0 20px 50px -10px rgba(0, 0, 0, 0.8), 0 0 30px rgba(224, 132, 61, 0.2)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #120a04;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(224, 132, 61, 0.22) 0%, transparent 60%),
+        radial-gradient(circle at 100% 100%, rgba(245, 158, 11, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 0% 50%, rgba(186, 103, 46, 0.12) 0%, transparent 45%),
+        linear-gradient(180deg, #120a04 0%, #1a0d06 100%);
+      color: #f5ece4;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+    }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #1a0d06; }
+    ::-webkit-scrollbar-thumb { background: #8a4c22; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #e0843d; }
+
+    .pulse-glow {
+      animation: pulseAnimation 2s infinite;
+    }
+    @keyframes pulseAnimation {
+      0%, 100% { opacity: 1; filter: drop-shadow(0 0 6px rgba(245,158,11,0.7)); }
+      50% { opacity: 0.6; filter: drop-shadow(0 0 2px rgba(245,158,11,0.2)); }
+    }
+
+    .wood-texture {
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.015),
+        rgba(255, 255, 255, 0.015) 10px,
+        rgba(0, 0, 0, 0.04) 10px,
+        rgba(0, 0, 0, 0.04) 20px
+      );
+    }
+  </style>
+</head>
+
+<body class="antialiased selection:bg-amber-600 selection:text-white flex flex-col min-h-screen">
+
+  <!-- Bar Atas -->
+  <div class="bg-desert-950/95 border-b border-desert-700/60 px-3 sm:px-4 py-2 text-[11px] sm:text-xs text-desert-300 text-center flex items-center justify-center gap-1.5 sm:gap-2 relative z-50">
+    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40 shrink-0">
+      <i data-lucide="badge-check" class="w-3 h-3 mr-1"></i> PORTAL RESMI
+    </span>
+    <span class="truncate sm:whitespace-normal">PEMILIHAN KETUA OSIS & MPK SMAN 80 • NEXORA 2026</span>
+  </div>
+
+  <!-- Header Navigasi -->
+  <header class="sticky top-0 z-40 backdrop-blur-md bg-desert-950/90 border-b border-desert-800 transition-all duration-200">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo Press Fit -->
+      <div class="flex items-center gap-2.5 sm:gap-3">
+        <div id="brand-logo-container" onclick="if(adminLoggedIn){switchTab('admin');switchAdminSubTab('media');}" title="SMAN 80 Jakarta" class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-desert-950 border-2 border-amber-500/80 shadow-lg shadow-amber-950/60 flex items-center justify-center shrink-0 overflow-hidden cursor-pointer relative group p-0">
+          <div id="brand-logo-inner" class="w-full h-full flex items-center justify-center overflow-hidden p-0">
+            <img src="https://cdn.phototourl.com/free/2026-09-18-13eff147-df99-4b58-8c13-5dc51afa938c.png" alt="Logo SMAN 80" class="w-full h-full object-cover object-center" />
+          </div>
+        </div>
+
+        <div onclick="switchTab('home')" class="cursor-pointer">
+          <div class="flex items-center gap-1.5 sm:gap-2">
+            <span class="font-western text-xl sm:text-2xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-100 to-orange-400">NEXORA</span>
+            <span class="text-[9px] sm:text-[10px] tracking-widest font-black uppercase text-amber-500/90 bg-amber-950/60 px-1 sm:px-1.5 py-0.5 rounded border border-amber-700/40">2026</span>
+          </div>
+          <p class="text-[10px] sm:text-[11px] text-desert-300 font-bold tracking-wide">OSIS SMAN 80 JAKARTA</p>
+        </div>
+      </div>
+
+      <!-- Tab Navigasi Desktop -->
+      <nav class="hidden md:flex items-center p-1.5 bg-desert-900/90 rounded-2xl border border-desert-700/60 shadow-inner gap-1">
+        <button id="nav-btn-home" onclick="switchTab('home')" 
+          class="flex items-center gap-2 px-4 py-2 rounded-xl font-semibold text-xs lg:text-sm transition-all duration-200 bg-gradient-to-r from-amber-600 to-amber-500 text-desert-950 shadow-md">
+          <i data-lucide="image" class="w-4 h-4"></i>
+          <span>Laman 1: Poster Digital</span>
+        </button>
+        <button id="nav-btn-voting" onclick="switchTab('voting')" 
+          class="flex items-center gap-2 px-4 py-2 rounded-xl font-semibold text-xs lg:text-sm transition-all duration-200 text-desert-300 hover:text-amber-300 hover:bg-desert-800/60">
+          <i data-lucide="bar-chart-3" class="w-4 h-4"></i>
+          <span>Laman 2: Pemilihan Ketua OSIS & MPK</span>
+          <span class="flex h-2 w-2 relative">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+          </span>
+        </button>
+      </nav>
+
+      <!-- Akses Masuk Panitia -->
+      <div class="flex items-center gap-2">
+        <div id="admin-session-badge" class="hidden items-center gap-2">
+          <button onclick="switchTab('admin')" class="px-2.5 sm:px-3.5 py-1.5 rounded-xl bg-amber-500/20 border border-amber-500 text-amber-300 text-xs font-bold flex items-center gap-1.5 hover:bg-amber-500/30 transition">
+            <i data-lucide="layout-dashboard" class="w-3.5 h-3.5"></i>
+            <span class="hidden sm:inline">Studio Panitia</span>
+          </button>
+          <button onclick="logoutAdmin()" title="Kunci / Keluar" class="p-1.5 sm:p-2 rounded-xl bg-red-950/70 text-red-300 border border-red-800/50 hover:bg-red-900 transition">
+            <i data-lucide="log-out" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <button id="admin-login-btn" onclick="openAdminModal()" 
+          class="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold bg-desert-900 hover:bg-desert-850 border border-amber-600/50 hover:border-amber-400 text-amber-300 transition-all shadow-sm">
+          <i data-lucide="lock" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400"></i>
+          <span>Akses Panitia</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Nav -->
+    <div class="grid grid-cols-2 md:hidden border-t border-desert-800/80 bg-desert-950 px-2 py-1.5 gap-2 text-center">
+      <button onclick="switchTab('home')" id="mobile-nav-home" class="flex items-center justify-center gap-1.5 py-2 rounded-xl text-xs font-bold text-amber-400 bg-desert-900/90 border border-amber-700/40">
+        <i data-lucide="image" class="w-3.5 h-3.5"></i>
+        <span>Laman 1: Poster</span>
+      </button>
+      <button onclick="switchTab('voting')" id="mobile-nav-voting" class="flex items-center justify-center gap-1.5 py-2 rounded-xl text-xs font-medium text-desert-300">
+        <i data-lucide="bar-chart-2" class="w-3.5 h-3.5"></i>
+        <span>Laman 2: Pemilihan</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="flex-1">
+
+    <!-- ==================== LAMAN 1: POSTER DIGITAL ==================== -->
+    <section id="tab-home" class="block">
+      <div class="relative overflow-hidden border-b border-desert-800/80 bg-gradient-to-b from-desert-950 via-desert-900 to-desert-950 py-10 sm:py-20 wood-texture">
+        <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-amber-500/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute top-1/2 right-10 w-72 h-72 bg-orange-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10 text-center">
+          <div class="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-desert-900/90 border border-amber-500/40 text-amber-300 text-[11px] sm:text-xs font-bold tracking-wider mb-4 sm:mb-5 shadow-lg backdrop-blur-md max-w-full">
+            <span class="text-sm sm:text-base shrink-0">🤠</span>
+            <span class="truncate sm:whitespace-normal">PEMILIHAN KETUA OSIS DAN MPK • SMAN 80 JAKARTA • 2026/2027</span>
+          </div>
+
+          <h1 class="font-western text-5xl sm:text-8xl lg:text-9xl tracking-wider text-transparent bg-clip-text bg-gradient-to-b from-amber-100 via-amber-300 to-amber-600 drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)] mb-3">
+            NEXORA
+          </h1>
+          
+          <div class="max-w-3xl mx-auto bg-desert-950/60 border border-amber-600/30 rounded-2xl py-2.5 sm:py-3 px-3 sm:px-4 mb-3 sm:mb-4 backdrop-blur-sm">
+            <p class="text-xs sm:text-xl text-amber-200 font-display font-bold tracking-wide uppercase leading-relaxed">
+              NEXT GENERATION OF ORGANIZED, RESPONSIBLE, AND ADAPTIVE LEADERS
+            </p>
+          </div>
+
+          <p class="font-western text-amber-400/90 text-xs sm:text-base tracking-widest uppercase mb-6 sm:mb-8">
+            ★ "Grow With Integrity, Lead With Purpose" ★
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <button onclick="switchTab('voting')" 
+              class="w-full sm:w-auto px-7 py-3.5 rounded-2xl font-black text-xs sm:text-sm bg-gradient-to-r from-amber-500 via-amber-400 to-orange-500 text-desert-950 hover:brightness-110 shadow-saloon transition-all flex items-center justify-center gap-2 transform hover:-translate-y-0.5">
+              <i data-lucide="bar-chart-2" class="w-4 h-4"></i>
+              <span>Buka Laman 2: Live Count & Video Paslon</span>
+            </button>
+            <a href="#poster-showcase" 
+              class="w-full sm:w-auto px-6 py-3.5 rounded-2xl font-bold text-xs sm:text-sm bg-desert-900/90 hover:bg-desert-850 border border-amber-600/50 text-desert-200 hover:text-white transition-all flex items-center justify-center gap-2">
+              <i data-lucide="eye" class="w-4 h-4 text-amber-400"></i>
+              <span>Eksplorasi Poster Resmi</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <section id="poster-showcase" class="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 py-10 sm:py-16">
+        <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+          <div class="inline-flex items-center gap-1.5 text-amber-500 font-mono text-xs uppercase tracking-widest font-bold">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> PUBLIKASI VISUAL RESMI
+          </div>
+          <h2 class="font-western text-2xl sm:text-4xl text-desert-100 mt-1">Poster Digital NEXORA 2026</h2>
+          <p class="text-desert-400 text-xs sm:text-sm mt-1 sm:mt-2">
+            Materi visual Pemilihan Ketua OSIS dan MPK bertema petualangan Wild West Saloon SMAN 80.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
+          <div class="lg:col-span-6 flex flex-col items-center w-full">
+            <div class="w-full max-w-md bg-gradient-to-b from-amber-700/60 via-desert-800 to-desert-900 rounded-[2rem] sm:rounded-[2.5rem] p-2.5 sm:p-4 border-2 border-amber-500/60 shadow-saloon relative group">
+              <div class="absolute top-3 left-3 w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-amber-400 border border-amber-800 shadow"></div>
+              <div class="absolute top-3 right-3 w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-amber-400 border border-amber-800 shadow"></div>
+              <div class="absolute bottom-3 left-3 w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-amber-400 border border-amber-800 shadow"></div>
+              <div class="absolute bottom-3 right-3 w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-amber-400 border border-amber-800 shadow"></div>
+
+              <div class="flex items-center justify-between px-2 sm:px-3 pb-2 mb-2 border-b border-amber-600/30 text-xs">
+                <span class="font-bold text-amber-300 flex items-center gap-1 font-western tracking-wider text-[11px] sm:text-xs">
+                  ★ OSIS SMAN 80 JAKARTA ★
+                </span>
+                <span class="text-[9px] sm:text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full bg-amber-950 text-amber-300 border border-amber-700/50">
+                  VERIFIED MPK & OSIS
+                </span>
+              </div>
+
+              <div class="relative overflow-hidden rounded-xl sm:rounded-2xl bg-desert-950 border border-amber-600/40 shadow-inner flex flex-col items-center">
+                <!-- Wrapper Poster Utama: Responsif HP & Laptop -->
+                <div id="main-poster-wrapper" class="w-full relative aspect-[9/15] bg-desert-950 flex items-center justify-center p-0 select-none overflow-hidden">
+                  <img src="https://cdn.phototourl.com/free/2026-09-18-46434124-0ec6-4440-a6f1-5ec8ea48f136.jpg" 
+                       alt="Poster Utama NEXORA 2026" 
+                       class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" 
+                       onerror="this.onerror=null; this.src='https://placehold.co/600x1000/120a04/f59e0b?text=NEXORA+2026';" />
+                  <div class="absolute bottom-2.5 sm:bottom-3 left-3 sm:left-4 right-3 sm:right-4 flex justify-center pointer-events-none">
+                    <span class="px-2.5 sm:px-3 py-1 rounded-lg text-[9px] sm:text-[10px] font-western bg-desert-950/90 text-amber-300 font-bold border border-amber-500/40 backdrop-blur-md shadow-lg">
+                      SMAN 80 • POSTER DIGITAL RESMI
+                    </span>
+                  </div>
+                </div>
+
+                <div class="absolute inset-0 bg-desert-950/80 opacity-0 group-hover:opacity-100 transition-all duration-200 flex flex-col items-center justify-center gap-2.5 sm:gap-3 backdrop-blur-sm p-4">
+                  <button onclick="openPosterModal()" class="w-48 sm:w-52 py-2.5 sm:py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-desert-950 font-black text-xs flex items-center justify-center gap-2 shadow-xl hover:brightness-110 transition transform hover:scale-105">
+                    <i data-lucide="maximize" class="w-4 h-4"></i>
+                    <span>Perbesar Layar Penuh</span>
+                  </button>
+                  <button onclick="copyPosterLink()" class="w-48 sm:w-52 py-2.5 sm:py-3 rounded-xl bg-desert-900 text-amber-300 font-bold text-xs border border-amber-600/50 flex items-center justify-center gap-2 hover:bg-desert-850 transition">
+                    <i data-lucide="share-2" class="w-4 h-4 text-amber-400"></i>
+                    <span>Bagikan Tautan Web</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="mt-2.5 flex items-center justify-between text-xs text-desert-400 px-1 sm:px-2">
+                <span class="flex items-center gap-1 text-[10px] sm:text-[11px]">
+                  <i data-lucide="info" class="w-3.5 h-3.5 text-amber-400"></i> Disahkan oleh MPK & OSIS
+                </span>
+                <button onclick="openPosterModal()" class="text-amber-400 hover:text-amber-300 font-bold text-[10px] sm:text-[11px] flex items-center gap-1">
+                  <span>Lihat Detail</span>
+                  <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-6 space-y-4 sm:space-y-6">
+            <div class="bg-gradient-to-br from-desert-900/90 via-desert-850 to-desert-950 rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-desert-700/80 shadow-saloon space-y-4 sm:space-y-5">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 text-xs font-bold border border-amber-500/30">
+                <i data-lucide="compass" class="w-3.5 h-3.5"></i> FILOSOFI KEPEMIMPINAN
+              </div>
+
+              <h3 class="font-western text-xl sm:text-3xl text-amber-200">
+                Menjelajah Masa Depan SMAN 80
+              </h3>
+              
+              <p class="text-xs sm:text-sm text-desert-300 leading-relaxed">
+                Pemimpin generasi baru <strong class="text-amber-300 font-semibold">NEXORA</strong> dibentuk dengan jiwa pengembara tangguh: berani melangkah, memegang kompas integritas, dan mengayomi seluruh siswa-siswi SMAN 80.
+              </p>
+
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 pt-1">
+                <div class="p-3.5 sm:p-4 bg-desert-950/80 rounded-2xl border border-desert-800 flex flex-col justify-between hover:border-amber-500/50 transition group">
+                  <div>
+                    <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-xs mb-2 group-hover:scale-110 transition">O</span>
+                    <h5 class="text-xs font-bold text-amber-300">ORGANIZED</h5>
+                    <p class="text-[11px] text-desert-400 mt-1 leading-snug">Tata kelola terstruktur & terencana matang.</p>
+                  </div>
+                </div>
+
+                <div class="p-3.5 sm:p-4 bg-desert-950/80 rounded-2xl border border-desert-800 flex flex-col justify-between hover:border-amber-500/50 transition group">
+                  <div>
+                    <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-orange-500/20 text-orange-400 flex items-center justify-center font-bold text-xs mb-2 group-hover:scale-110 transition">R</span>
+                    <h5 class="text-xs font-bold text-orange-300">RESPONSIBLE</h5>
+                    <p class="text-[11px] text-desert-400 mt-1 leading-snug">Menjaga amanah dengan integritas penuh.</p>
+                  </div>
+                </div>
+
+                <div class="p-3.5 sm:p-4 bg-desert-950/80 rounded-2xl border border-desert-800 flex flex-col justify-between hover:border-amber-500/50 transition group">
+                  <div>
+                    <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-yellow-500/20 text-yellow-400 flex items-center justify-center font-bold text-xs mb-2 group-hover:scale-110 transition">A</span>
+                    <h5 class="text-xs font-bold text-yellow-300">ADAPTIVE</h5>
+                    <p class="text-[11px] text-desert-400 mt-1 leading-snug">Cepat tanggap merespons tantangan zaman.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-desert-900/70 rounded-2xl sm:rounded-3xl p-5 sm:p-6 border border-desert-800 space-y-3.5">
+              <div class="flex items-center justify-between border-b border-desert-800 pb-2.5">
+                <span class="text-xs font-bold text-amber-400 flex items-center gap-1.5 uppercase font-mono tracking-wider">
+                  <i data-lucide="check-circle-2" class="w-4 h-4"></i> Alur Pencoblosan Offline TPS
+                </span>
+                <span class="text-[10px] text-desert-400 bg-desert-950 px-2 py-0.5 rounded border border-desert-800">
+                  SMAN 80
+                </span>
+              </div>
+
+              <div class="space-y-2 text-xs text-desert-300">
+                <div class="flex items-start gap-2.5 bg-desert-950/60 p-2.5 rounded-xl border border-desert-800/60">
+                  <div class="w-5 h-5 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">1</div>
+                  <p class="text-[11px] leading-relaxed">
+                    Siswa hadir di TPS fisik SMAN 80 & registrasi kehadiran bersama panitia.
+                  </p>
+                </div>
+
+                <div class="flex items-start gap-2.5 bg-desert-950/60 p-2.5 rounded-xl border border-desert-800/60">
+                  <div class="w-5 h-5 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">2</div>
+                  <p class="text-[11px] leading-relaxed">
+                    Mencoblos surat suara fisik untuk <strong>3 Calon Ketos</strong> & <strong>4 Calon Ketum MPK</strong>.
+                  </p>
+                </div>
+
+                <div class="flex items-start gap-2.5 bg-desert-950/60 p-2.5 rounded-xl border border-desert-800/60">
+                  <div class="w-5 h-5 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">3</div>
+                  <p class="text-[11px] leading-relaxed">
+                    Celup jari ke tinta, panitia merekapitulasi suara yang tersinkron otomatis ke cloud real-time.
+                  </p>
+                </div>
+              </div>
+
+              <div class="pt-1.5">
+                <button onclick="switchTab('voting')" 
+                  class="w-full py-3 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-orange-500 text-desert-950 font-black text-xs shadow-lg hover:brightness-110 flex items-center justify-center gap-2 transition">
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                  <span>Lanjut ke Laman 2: Live Count & Video Paslon</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 py-8 sm:py-10 border-t border-desert-800/60">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 mb-6 sm:mb-8">
+          <div>
+            <span class="text-amber-500 font-mono text-xs font-bold uppercase tracking-wider">Kandidat Pemimpin 2026</span>
+            <h3 class="font-western text-xl sm:text-3xl text-desert-100 mt-0.5">Daftar Kandidat OSIS & MPK SMAN 80</h3>
+          </div>
+          <button onclick="switchTab('voting')" class="self-start sm:self-auto px-3.5 py-2 rounded-xl bg-desert-900 border border-amber-600/40 text-amber-300 hover:bg-desert-800 text-xs font-bold flex items-center gap-1.5 transition">
+            <span>Tonton Video & Live Count</span>
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <div class="space-y-3 mb-6 sm:mb-7">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40 text-[10px] font-bold uppercase tracking-wider">
+                Kategori I
+              </span>
+              <h4 class="font-western text-xs sm:text-sm text-amber-200">Calon Ketua OSIS (3 Kandidat)</h4>
+            </div>
+            <span class="text-[10px] sm:text-[11px] text-desert-400 font-mono flex items-center gap-1">
+              <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span> Suara Live
+            </span>
+          </div>
+          <div id="laman1-preview-osis" class="grid grid-cols-1 sm:grid-cols-3 gap-3"></div>
+        </div>
+
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="px-2 py-0.5 rounded-full bg-orange-500/20 text-orange-300 border border-orange-500/40 text-[10px] font-bold uppercase tracking-wider">
+                Kategori II
+              </span>
+              <h4 class="font-western text-xs sm:text-sm text-orange-200">Calon Ketua Umum MPK (4 Kandidat)</h4>
+            </div>
+            <span class="text-[10px] sm:text-[11px] text-desert-400 font-mono flex items-center gap-1">
+              <span class="w-2 h-2 rounded-full bg-orange-400 animate-pulse"></span> Suara Live
+            </span>
+          </div>
+          <div id="laman1-preview-mpk" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3"></div>
+        </div>
+      </section>
+    </section>
+
+    <!-- ==================== LAMAN 2: PEMILOS & MPK ==================== -->
+    <section id="tab-voting" class="hidden pb-20">
+      <div class="border-b border-desert-800 bg-desert-950/90 backdrop-blur sticky top-16 sm:top-20 z-30 py-3 sm:py-4 px-3 sm:px-8 shadow-md">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div class="flex items-center gap-2.5 sm:gap-3">
+            <div class="w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full bg-red-500 pulse-glow shrink-0"></div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h2 class="font-western text-base sm:text-xl text-amber-100">Live Quick Count TPS SMAN 80</h2>
+                <span class="text-[9px] sm:text-[10px] font-bold px-1.5 sm:px-2 py-0.5 rounded bg-red-950/80 text-red-400 border border-red-800/50 uppercase">LIVE REALTIME</span>
+              </div>
+              <p class="text-[10px] sm:text-xs text-desert-400">Sinkronisasi instan cloud Firebase ke seluruh layar HP & Komputer</p>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between w-full sm:w-auto gap-3 bg-desert-900 px-3 sm:px-4 py-1.5 sm:py-2 rounded-2xl border border-desert-700/70 shadow-sm">
+            <div class="text-left sm:text-right">
+              <p class="text-[9px] sm:text-[10px] uppercase font-bold text-desert-400 leading-tight">Status Cloud</p>
+              <p class="text-[11px] sm:text-xs text-amber-400 font-mono" id="last-updated-text">Tersinkron</p>
+            </div>
+            
+            <div class="flex items-center gap-2">
+              <div class="relative w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center">
+                <svg class="w-8 h-8 sm:w-10 sm:h-10 transform -rotate-90">
+                  <circle cx="16" cy="16" r="13" stroke="#381f0d" stroke-width="2.5" fill="transparent" class="sm:hidden"/>
+                  <circle id="timer-circle-mobile" cx="16" cy="16" r="13" stroke="#f59e0b" stroke-width="2.5" fill="transparent" 
+                          stroke-dasharray="81.68" stroke-dashoffset="0" class="sm:hidden transition-all duration-1000 ease-linear"/>
+                  <circle cx="20" cy="20" r="16" stroke="#381f0d" stroke-width="3" fill="transparent" class="hidden sm:block"/>
+                  <circle id="timer-circle" cx="20" cy="20" r="16" stroke="#f59e0b" stroke-width="3" fill="transparent" 
+                          stroke-dasharray="100.53" stroke-dashoffset="0" class="hidden sm:block transition-all duration-1000 ease-linear"/>
+                </svg>
+                <span id="countdown-seconds" class="absolute font-mono font-bold text-[10px] sm:text-[11px] text-amber-300">60</span>
+              </div>
+
+              <button onclick="refreshDataManual()" title="Perbarui Sekarang" 
+                class="p-1.5 sm:p-2 rounded-xl bg-desert-800 hover:bg-desert-700 text-amber-300 transition text-xs sm:text-sm">
+                <i data-lucide="refresh-cw" id="refresh-icon" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 pt-6 sm:pt-8 space-y-8 sm:space-y-12">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
+          <div class="bg-desert-900/80 rounded-2xl p-3.5 sm:p-5 border border-desert-800">
+            <div class="flex items-center justify-between text-desert-400 text-[10px] sm:text-xs font-semibold">
+              <span class="truncate">SUARA (3 KETOS)</span>
+              <i data-lucide="users" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400 shrink-0"></i>
+            </div>
+            <p id="metric-total-osis" class="font-western text-xl sm:text-3xl text-amber-300 mt-1 sm:mt-2">0</p>
+            <p class="text-[10px] text-desert-400 mt-0.5">3 Pasangan Calon</p>
+          </div>
+
+          <div class="bg-desert-900/80 rounded-2xl p-3.5 sm:p-5 border border-desert-800">
+            <div class="flex items-center justify-between text-desert-400 text-[10px] sm:text-xs font-semibold">
+              <span class="truncate">SUARA (4 MPK)</span>
+              <i data-lucide="award" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-orange-400 shrink-0"></i>
+            </div>
+            <p id="metric-total-mpk" class="font-western text-xl sm:text-3xl text-orange-300 mt-1 sm:mt-2">0</p>
+            <p class="text-[10px] text-desert-400 mt-0.5">4 Calon Ketua Umum</p>
+          </div>
+
+          <div class="bg-desert-900/80 rounded-2xl p-3.5 sm:p-5 border border-desert-800 col-span-2 sm:col-span-1">
+            <div class="flex items-center justify-between text-desert-400 text-[10px] sm:text-xs font-semibold">
+              <span>PARTISIPASI PEMILIH</span>
+              <i data-lucide="pie-chart" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400 shrink-0"></i>
+            </div>
+            <div class="flex items-baseline justify-between mt-1 sm:mt-2">
+              <div>
+                <span class="text-[9px] sm:text-[10px] text-amber-300 font-bold">OSIS: </span>
+                <span id="metric-percentage-osis" class="font-western text-base sm:text-xl text-amber-300">0%</span>
+              </div>
+              <div>
+                <span class="text-[9px] sm:text-[10px] text-orange-300 font-bold">MPK: </span>
+                <span id="metric-percentage-mpk" class="font-western text-base sm:text-xl text-orange-300">0%</span>
+              </div>
+            </div>
+            <div class="space-y-1 mt-1.5 sm:mt-2">
+              <div class="w-full bg-desert-950 rounded-full h-1 sm:h-1.5 overflow-hidden">
+                <div id="metric-dpt-bar-osis" class="bg-amber-500 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+              </div>
+              <div class="w-full bg-desert-950 rounded-full h-1 sm:h-1.5 overflow-hidden">
+                <div id="metric-dpt-bar-mpk" class="bg-orange-500 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-desert-900/80 rounded-2xl p-3.5 sm:p-5 border border-desert-800 col-span-2 sm:col-span-1">
+            <div class="flex items-center justify-between text-desert-400 text-[10px] sm:text-xs font-semibold">
+              <span>ORASI RESMI</span>
+              <i data-lucide="youtube" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-red-500 shrink-0"></i>
+            </div>
+            <p class="font-bold text-xs sm:text-sm text-amber-200 mt-1 sm:mt-2 flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span> 7 Video Berjejer Terpasang
+            </p>
+            <p class="text-[10px] text-desert-400 mt-0.5">3 Ketos & 4 MPK</p>
+          </div>
+        </div>
+
+        <!-- 3 PASLON KETOS -->
+        <div class="space-y-4 sm:space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-1.5 border-b border-desert-800 pb-2.5 sm:pb-3">
+            <div>
+              <span class="text-amber-500 font-mono text-xs font-bold uppercase tracking-wider">Kategori I</span>
+              <h3 class="font-western text-xl sm:text-3xl text-desert-100 mt-0.5">Calon Ketua OSIS (3 Kandidat)</h3>
+            </div>
+            <span class="text-[11px] sm:text-xs text-desert-400">Format HP & Desktop: Poster Fit + Orasi YouTube & Slogan</span>
+          </div>
+
+          <div class="bg-desert-900/60 rounded-2xl p-4 sm:p-6 border border-desert-800 space-y-3.5 sm:space-y-4">
+            <h4 class="text-xs font-bold text-desert-300 uppercase tracking-wider flex items-center gap-2">
+              <i data-lucide="bar-chart" class="w-4 h-4 text-amber-400"></i> Perolehan Suara TPS Calon Ketos
+            </h4>
+            <div id="live-bars-osis" class="space-y-3 sm:space-y-4"></div>
+          </div>
+
+          <div id="cards-osis-grid" class="space-y-5 sm:space-y-6"></div>
+        </div>
+
+        <!-- 4 CALON KETUM MPK -->
+        <div class="space-y-4 sm:space-y-6 pt-4 sm:pt-6">
+          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-1.5 border-b border-desert-800 pb-2.5 sm:pb-3">
+            <div>
+              <span class="text-orange-500 font-mono text-xs font-bold uppercase tracking-wider">Kategori II</span>
+              <h3 class="font-western text-xl sm:text-3xl text-desert-100 mt-0.5">Calon Ketua Umum MPK (4 Kandidat)</h3>
+            </div>
+            <span class="text-[11px] sm:text-xs text-desert-400">Format HP & Desktop: Poster Fit + Orasi YouTube & Slogan</span>
+          </div>
+
+          <div class="bg-desert-900/60 rounded-2xl p-4 sm:p-6 border border-desert-800 space-y-3.5 sm:space-y-4">
+            <h4 class="text-xs font-bold text-desert-300 uppercase tracking-wider flex items-center gap-2">
+              <i data-lucide="bar-chart" class="w-4 h-4 text-orange-400"></i> Perolehan Suara TPS Calon Ketum MPK
+            </h4>
+            <div id="live-bars-mpk" class="space-y-3 sm:space-y-4"></div>
+          </div>
+
+          <div id="cards-mpk-grid" class="space-y-5 sm:space-y-6"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== STUDIO PANITIA ==================== -->
+    <section id="tab-admin" class="hidden pb-20">
+      <div class="border-b border-desert-800 bg-desert-950 py-4 sm:py-6 px-3 sm:px-8">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-amber-500/20 border border-amber-500/40 text-amber-400 flex items-center justify-center text-xl sm:text-2xl shadow-inner shrink-0">
+              <i data-lucide="shield-check" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h2 class="font-western text-lg sm:text-2xl text-desert-100">Studio Panitia Pemilihan</h2>
+                <span class="text-[9px] sm:text-[10px] font-bold px-1.5 sm:px-2 py-0.5 bg-emerald-950 text-emerald-400 border border-emerald-800 rounded">CLOUD REALTIME</span>
+              </div>
+              <p class="text-[11px] sm:text-xs text-desert-400">Kelola angka suara, logo sekolah, poster utama, slogan, dan visi-misi paslon</p>
+            </div>
+          </div>
+
+          <div class="flex items-center p-1 bg-desert-900 rounded-2xl border border-desert-700/80 gap-1 w-full sm:w-auto">
+            <button id="admin-subtab-btn-votes" onclick="switchAdminSubTab('votes')" 
+              class="flex-1 sm:flex-initial px-3 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all bg-amber-500 text-desert-950 shadow">
+              <i data-lucide="vote" class="w-3.5 h-3.5 inline mr-1"></i> 1. Input Suara
+            </button>
+            <button id="admin-subtab-btn-media" onclick="switchAdminSubTab('media')" 
+              class="flex-1 sm:flex-initial px-3 sm:px-4 py-2 rounded-xl text-xs font-semibold text-desert-300 hover:text-amber-300 transition-all truncate">
+              <i data-lucide="file-edit" class="w-3.5 h-3.5 inline mr-1"></i> 2. Media & Slogan
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-6xl mx-auto px-3 sm:px-6 pt-6 sm:pt-8">
+        <!-- Sub-Halaman 1: Suara TPS -->
+        <div id="admin-subpage-votes" class="space-y-6 sm:space-y-8 block">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+            <div class="bg-desert-900/80 border border-desert-700/80 rounded-2xl sm:rounded-3xl p-4 sm:p-6 space-y-3 sm:space-y-4">
+              <div class="flex items-center justify-between border-b border-desert-800 pb-2.5">
+                <h4 class="font-western text-sm sm:text-base text-amber-300">Input Suara 3 Calon Ketos</h4>
+                <span class="text-[11px] sm:text-xs font-mono text-desert-400">TPS SMAN 80</span>
+              </div>
+              <div class="space-y-2.5 sm:space-y-3" id="admin-votes-osis-container"></div>
+            </div>
+
+            <div class="bg-desert-900/80 border border-desert-700/80 rounded-2xl sm:rounded-3xl p-4 sm:p-6 space-y-3 sm:space-y-4">
+              <div class="flex items-center justify-between border-b border-desert-800 pb-2.5">
+                <h4 class="font-western text-sm sm:text-base text-orange-300">Input Suara 4 Calon Ketum MPK</h4>
+                <span class="text-[11px] sm:text-xs font-mono text-desert-400">TPS SMAN 80</span>
+              </div>
+              <div class="space-y-2.5 sm:space-y-3" id="admin-votes-mpk-container"></div>
+            </div>
+          </div>
+
+          <div class="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-desert-950 border border-desert-800 flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
+            <button onclick="saveAdminData()" 
+                    class="w-full sm:flex-1 py-3.5 rounded-2xl bg-gradient-to-r from-amber-500 via-amber-400 to-orange-500 text-desert-950 font-black text-xs sm:text-sm shadow-xl hover:brightness-110 flex items-center justify-center gap-2 transition">
+              <i data-lucide="cloud-upload" class="w-4 h-4"></i>
+              <span>Simpan & Sinkronkan ke Semua HP Siswa</span>
+            </button>
+            <button onclick="switchTab('voting')" 
+                    class="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-desert-900 hover:bg-desert-850 text-amber-300 border border-desert-700 text-xs font-bold flex items-center justify-center gap-2 transition">
+              <i data-lucide="eye" class="w-4 h-4"></i> Lihat Tampilan Laman 2
+            </button>
+          </div>
+
+          <div class="bg-desert-900/60 border border-desert-800 rounded-2xl sm:rounded-3xl p-4 sm:p-6 space-y-2.5 sm:space-y-3">
+            <span class="text-xs font-bold text-desert-300 flex items-center gap-2">
+              <i data-lucide="history" class="w-4 h-4 text-amber-400"></i> Riwayat Sinkronisasi Suara
+            </span>
+            <div id="page-admin-logs" class="max-h-36 overflow-y-auto bg-desert-950 rounded-xl sm:rounded-2xl p-3 border border-desert-800/80 space-y-1 font-mono text-[11px] sm:text-xs text-desert-400"></div>
+          </div>
+        </div>
+
+        <!-- Sub-Halaman 2: Media URL, Slogan & Visi Misi -->
+        <div id="admin-subpage-media" class="space-y-6 sm:space-y-8 hidden">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+            
+            <!-- 1. URL LOGO POJOK KIRI ATAS -->
+            <div class="bg-desert-900/80 border border-desert-700/80 rounded-2xl sm:rounded-3xl p-4 sm:p-6 space-y-2.5 sm:space-y-3">
+              <div class="flex items-center justify-between border-b border-desert-800 pb-2">
+                <span class="font-western text-sm text-amber-300">Logo Pojok Kiri Atas</span>
+                <button type="button" onclick="resetCustomLogo()" class="text-[11px] text-desert-400 hover:text-red-400 underline">Gunakan Bawaan</button>
+              </div>
+              <p class="text-xs text-desert-300">Direct URL logo yang tampil di pojok kiri atas bilah navigasi.</p>
+              
+              <div class="flex items-center gap-3 bg-desert-950 p-3 rounded-xl sm:rounded-2xl border border-desert-800">
+                <div id="admin-preview-logo-2" class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-desert-900 border border-desert-700 flex items-center justify-center overflow-hidden shrink-0 p-0">
+                  <img src="https://cdn.phototourl.com/free/2026-09-18-13eff147-df99-4b58-8c13-5dc51afa938c.png" alt="Logo SMAN 80" class="w-full h-full object-cover object-center" />
+                </div>
+                <div class="flex-1">
+                  <input type="url" id="admin-global-logo-input" value="https://cdn.phototourl.com/free/2026-09-18-13eff147-df99-4b58-8c13-5dc51afa938c.png" placeholder="https://i.postimg.cc/.../logo.png" 
+                         class="w-full bg-desert-900 border border-desert-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-400 font-mono" />
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. URL POSTER UTAMA LAMAN 1 -->
+            <div class="bg-desert-900/80 border border-desert-700/80 rounded-2xl sm:rounded-3xl p-4 sm:p-6 space-y-2.5 sm:space-y-3">
+              <div class="flex items-center justify-between border-b border-desert-800 pb-2">
+                <span class="font-western text-sm text-amber-300">URL Poster Utama (Laman 1)</span>
+                <button type="button" onclick="resetMainPoster()" class="text-[11px] text-desert-400 hover:text-red-400 underline">Gunakan Bawaan</button>
+              </div>
+              <p class="text-xs text-desert-300">Tautan poster bingkai saloon vertikal Laman 1.</p>
+              
+              <div class="bg-desert-950 p-3 rounded-xl sm:rounded-2xl border border-desert-800">
+                <input type="url" id="admin-global-poster-input" value="https://cdn.phototourl.com/free/2026-09-18-46434124-0ec6-4440-a6f1-5ec8ea48f136.jpg" placeholder="https://i.postimg.cc/.../poster.jpg" 
+                       class="w-full bg-desert-900 border border-desert-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-400 font-mono" />
+              </div>
+            </div>
+
+          </div>
+
+          <!-- URL Media & Slogan Paslon OSIS -->
+          <div class="bg-desert-900/80 border border-desert-700/80 rounded-2xl sm:rounded-3xl p-4 sm:p-6 space-y-4">
+            <h4 class="font-western text-sm sm:text-base text-amber-300 border-b border-desert-800 pb-2">
+              Media, Slogan & Visi Misi 3 Calon Ketua OSIS (Caketos)
+            </h4>
+            <div class="space-y-4" id="admin-media-osis-container"></div>
+          </div>
+
+          <!-- URL Media & Slogan Paslon MPK -->
+          <div class="bg-desert-900/80 border border-desert-700/80 rounded-2xl sm:rounded-3xl p-4 sm:p-6 space-y-4">
+            <h4 class="font-western text-sm sm:text-base text-orange-300 border-b border-desert-800 pb-2">
+              Media, Slogan & Visi Misi 4 Calon Ketum MPK (Caketum)
+            </h4>
+            <div class="space-y-4" id="admin-media-mpk-container"></div>
+          </div>
+
+          <div class="text-right">
+            <button onclick="saveAdminData()" 
+                    class="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 text-desert-950 font-black text-xs sm:text-sm shadow-xl hover:brightness-110 transition">
+              Simpan & Sinkronkan Seluruh Data
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL LOGIN ADMIN -->
+  <div id="admin-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-desert-900 border border-amber-600/60 rounded-3xl max-w-sm w-full shadow-2xl overflow-hidden">
+      <div class="p-4 sm:p-5 border-b border-desert-800 flex items-center justify-between bg-desert-950">
+        <div class="flex items-center gap-2">
+          <i data-lucide="shield" class="w-4 h-4 sm:w-5 sm:h-5 text-amber-400"></i>
+          <h3 class="font-western text-xs sm:text-sm text-desert-100">Akses Masuk Panitia</h3>
+        </div>
+        <button onclick="closeAdminModal()" class="text-desert-400 hover:text-white p-1">
+          <i data-lucide="x" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+        </button>
+      </div>
+
+      <div class="p-5 sm:p-6 space-y-3.5 text-center">
+        <p class="text-xs text-desert-300">
+          Masukkan kata sandi panitia untuk membuka Studio Panitia.
+        </p>
+        <div>
+          <input type="password" id="admin-pin-input" placeholder="Masukkan sandi..." 
+                 onkeydown="if(event.key==='Enter') verifyAdminPin()"
+                 class="w-full bg-desert-950 border border-desert-700 rounded-xl px-4 py-2.5 text-sm text-center text-white focus:outline-none focus:border-amber-400 shadow-inner" />
+        </div>
+        <button onclick="verifyAdminPin()" 
+                class="w-full py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:brightness-110 text-desert-950 font-bold text-xs transition shadow-md">
+          Buka Studio Panitia
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL YOUTUBE -->
+  <div id="youtube-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-3 sm:p-4">
+    <div class="bg-desert-900 border border-amber-600/70 rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl flex flex-col">
+      <div class="p-3.5 sm:p-4 border-b border-desert-800 flex items-center justify-between bg-desert-950">
+        <div class="flex items-center gap-2">
+          <i data-lucide="youtube" class="w-4 h-4 sm:w-5 sm:h-5 text-red-500"></i>
+          <div>
+            <h3 id="yt-modal-title" class="font-bold text-xs sm:text-sm text-desert-100 truncate max-w-[200px] sm:max-w-none">Video Orasi Kandidat</h3>
+            <p class="text-[10px] sm:text-[11px] text-desert-400">SMAN 80 NEXORA 2026</p>
+          </div>
+        </div>
+        <button onclick="closeYoutubeModal()" class="text-desert-400 hover:text-white p-1">
+          <i data-lucide="x" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+        </button>
+      </div>
+      
+      <div class="relative aspect-video bg-black">
+        <iframe id="yt-modal-iframe" class="w-full h-full" src="" 
+                title="YouTube Video" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="p-3 bg-desert-950/80 border-t border-desert-800 flex justify-end">
+        <button onclick="closeYoutubeModal()" class="px-4 py-1.5 rounded-lg bg-amber-500 text-desert-950 font-bold text-xs hover:bg-amber-400 transition">
+          Tutup Video
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL DETAIL VISI MISI -->
+  <div id="candidate-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden items-center justify-center p-3 sm:p-4">
+    <div class="bg-desert-900 border border-amber-600/50 rounded-3xl max-w-lg w-full max-h-[88vh] overflow-y-auto shadow-2xl p-4 sm:p-6 space-y-3.5 sm:space-y-4">
+      <div class="flex items-center justify-between border-b border-desert-800 pb-3">
+        <div>
+          <span id="modal-candidate-badge" class="px-2.5 sm:px-3 py-1 rounded-xl text-[11px] sm:text-xs font-black bg-gradient-to-r from-amber-500 via-amber-400 to-orange-500 text-desert-950 font-western tracking-wider shadow-md border border-amber-300/40">NO 01</span>
+          <h3 id="modal-candidate-name" class="font-bold text-sm sm:text-base text-desert-100 mt-1.5 sm:mt-2">Nama Paslon</h3>
+        </div>
+        <button onclick="closeCandidateModal()" class="text-desert-400 hover:text-white p-1">
+          <i data-lucide="x" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+        </button>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-amber-400 text-xs uppercase mb-1">Visi Utama</h4>
+        <p id="modal-candidate-visi" class="text-xs text-desert-300 bg-desert-950 p-3 rounded-xl border border-desert-800 leading-relaxed"></p>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-amber-400 text-xs uppercase mb-1">Misi Strategis</h4>
+        <ul id="modal-candidate-misi" class="list-decimal list-inside text-xs text-desert-300 space-y-1.5 bg-desert-950 p-3 sm:p-3.5 rounded-xl border border-desert-800 leading-relaxed"></ul>
+      </div>
+
+      <div class="text-right pt-1 sm:pt-2">
+        <button onclick="closeCandidateModal()" class="w-full sm:w-auto px-4 py-2 rounded-xl bg-amber-500 text-desert-950 font-bold text-xs">
+          Tutup
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL ZOOM POSTER -->
+  <div id="poster-modal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden items-center justify-center p-2 sm:p-4">
+    <div class="relative max-w-2xl w-full flex flex-col items-center">
+      <button onclick="closePosterModal()" class="absolute -top-9 right-1 text-white hover:text-amber-400 text-xs sm:text-sm flex items-center gap-1 font-bold">
+        <span>Tutup</span> <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+      <div id="poster-modal-content" class="rounded-2xl overflow-hidden border-2 border-amber-500 shadow-2xl p-0 bg-desert-950 w-full flex flex-col items-center"></div>
+    </div>
+  </div>
+
+  <!-- TOAST CONTAINER -->
+  <div id="toast-container" class="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-50 flex flex-col gap-2 pointer-events-none max-w-[90vw]"></div>
+
+  <!-- Footer -->
+  <footer class="mt-auto border-t border-desert-800 bg-desert-950 text-desert-400 py-6 sm:py-8 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-center sm:text-left">
+      <div class="flex items-center gap-2">
+        <span class="font-western text-amber-400 text-sm sm:text-base">OSIS SMAN 80 JAKARTA</span>
+        <span class="text-desert-400">• Pemilihan Ketua OSIS & MPK NEXORA 2026</span>
+      </div>
+      <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-desert-400 text-[11px] sm:text-xs">
+        <button onclick="switchTab('home')" class="hover:text-amber-400">Laman 1: Poster Digital</button>
+        <button onclick="switchTab('voting')" class="hover:text-amber-400">Laman 2: Live Count</button>
+        <button onclick="openAdminModal()" class="hover:text-amber-400">Akses Panitia</button>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // =======================================================
+    // FIREBASE REALTIME DATABASE CONFIGURATION
+    // =======================================================
+    const firebaseConfig = {
+      databaseURL: "https://nexora2026-default-rtdb.asia-southeast1.firebasedatabase.app"
+    };
+
+    let db = null;
+    try {
+      firebase.initializeApp(firebaseConfig);
+      db = firebase.database();
+    } catch (e) {
+      console.warn("Firebase belum terhubung, fallback ke memori lokal browser", e);
+    }
+
+    const DPT_TOTAL = 950;
+
+    // POSTER UTAMA & LOGO DEFAULT NEXORA 2026
+    const DEFAULT_MAIN_POSTER = "https://cdn.phototourl.com/free/2026-09-18-46434124-0ec6-4440-a6f1-5ec8ea48f136.jpg";
+    const DEFAULT_LOGO_URL = "https://cdn.phototourl.com/free/2026-09-18-13eff147-df99-4b58-8c13-5dc51afa938c.png";
+
+    // 3 CALON KETOS RESMI
+    const DEFAULT_CANDIDATES_OSIS = [
+      {
+        id: "osis_1",
+        number: "01",
+        leadName: "Khalisa Putri Indriya",
+        viceName: "",
+        classes: "SMAN 80 Jakarta",
+        tagline: "Satu Suara, Satu Pilihan, Satu Tujuan.",
+        posterUrl: "https://cdn.phototourl.com/free/2026-09-19-07038c6b-342a-4f88-aa67-d83b1306dfb3.jpg",
+        youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        votes: 184,
+        color: "from-amber-500 via-amber-400 to-orange-500",
+        visi: "Mewujudkan organisasi yang terbuka dalam berkomunikasi dan kuat dalam berkolaborasi untuk menciptakan organisasi yang kreatif, inovatif, dan berdampak positif, serta mengembangkan potensi organisasi dengan berlandaskan nilai SATU: Solidaritas, Aspirasi, Keterbukaan, Untuk berkolaborasi.",
+        misi: [
+          "Menanamkan sikap bertanggung jawab dan berintegritas dengan berlandaskan nilai Ketuhanan Yang Maha Esa dan Pancasila dalam organisasi.",
+          "Membangun komunikasi yang terbuka dan kolaboratif dengan menjunjung tinggi solidaritas dalam mewujudkan aspirasi.",
+          "Mendorong pengembangan potensi diri dan kemampuan untuk bertumbuh, berkreasi, dan berkontribusi dalam organisasi."
+        ]
+      },
+      {
+        id: "osis_2",
+        number: "02",
+        leadName: "Margaretha Victoria Intan",
+        viceName: "",
+        classes: "SMAN 80 Jakarta",
+        tagline: "Buka Komunikasi, Wujudkan Aksi!",
+        posterUrl: "https://cdn.phototourl.com/member/2026-09-19-8d16aea9-0708-4548-a57e-8c0319a8e2ee.jpg",
+        youtubeUrl: "https://www.youtube.com/watch?v=L_LUpnjgPso",
+        votes: 215,
+        color: "from-amber-500 via-amber-400 to-orange-500",
+        visi: "Terwujudnya OSIS SMA Negeri 80 Jakarta sebagai organisasi yang berintegritas, responsif, kolaboratif, dan dapat menjadi wadah bagi siswa/i untuk mengembangkan potensinya, serta menciptakan ruang yang inklusif melalui komunikasi aktif.",
+        misi: [
+          "Mendorong siswa/i untuk berpartisipasi aktif dalam memberikan ide dan aspirasi untuk kegiatan sekolah.",
+          "Membentuk hubungan yang baik dengan seluruh warga sekolah serta menciptakan relasi dengan berbagai pihak eksternal sebagai upaya pembentukan kolaborasi yang berkelanjutan.",
+          "Melaksanakan program kerja yang dapat menjadi wadah siswa/i untuk menyalurkan potensi diri melalui kegiatan positif."
+        ]
+      },
+      {
+        id: "osis_3",
+        number: "03",
+        leadName: "Khaulah Al Adawiyah",
+        viceName: "",
+        classes: "SMAN 80 Jakarta",
+        tagline: "Three the vibe, Make the change.",
+        posterUrl: "https://cdn.phototourl.com/free/2026-09-19-e792aee9-7815-4a27-b0fe-000315d9d822.jpg",
+        youtubeUrl: "https://www.youtube.com/watch?v=kJQP7kiw5Fk",
+        votes: 142,
+        color: "from-amber-500 via-amber-400 to-orange-500",
+        visi: "Mewujudkan OSIS sebagai penggerak perubahan dan pembawa angin segar dalam membangun lingkungan sekolah yang lebih inklusif, kolaboratif, dan inovatif, serta memberi ruang bagi setiap siswa/i untuk dapat berperan, berkembang dan bertumbuh bersama.",
+        misi: [
+          "Menyediakan ruang yang aman dan terbuka bagi seluruh siswa/i untuk dapat menyampaikan gagasan, aspirasi, dan persoalan yang mereka hadapi di sekolah ini. Mendorong komunikasi dua arah dengan menyampaikan aspirasi siswa/i kepada pihak sekolah secara konstruktif, transparan, dan bertanggung jawab.",
+          "Membersamai siswa/i dalam menyikapi dan menghadapi isu-isu penting, menyuarakan kepentingan mereka, dan mendorong penyelesaian yang bijak dan solutif dengan tetap menghormati peran dan kebijakan sekolah.",
+          "Menghadirkan program dan ruang kolaboratif yang inovatif dan relevan untuk mewadahi minat, bakat, dan kreativitas siswa/i, sekaligus mendorong partisipasi aktif mereka untuk ikut menciptakan dan merealisasikan kegiatan yang membawa perubahan bagi sekolah."
+        ]
+      }
+    ];
+
+    // 4 CALON KETUM MPK RESMI
+    const DEFAULT_CANDIDATES_MPK = [
+      {
+        id: "mpk_1",
+        number: "01",
+        leadName: "Earlene Aprilia Untung",
+        classes: "SMAN 80 Jakarta",
+        tagline: "Your Voice, Your Choice, Our Move.",
+        posterUrl: "https://cdn.phototourl.com/free/2026-09-19-c994601f-cb29-4161-b8ee-9f94f0625dc7.jpg",
+        youtubeUrl: "https://www.youtube.com/watch?v=3JZ_D3ELwOQ",
+        votes: 128,
+        color: "from-amber-500 via-amber-400 to-orange-500",
+        visi: "Mewujudkan MPK yang aspiratif dan kolaboratif sebagai representasi siswa, serta membentuk anggota MPK yang kompeten dalam menjalankan fungsi pengawasan, pendampingan, evaluasi, dan pemanfaatan teknologi.",
+        misi: [
+          "Hadir sebelum diminta, mendengar sebelum menyimpulkan.",
+          "Mengawal setiap suara agar dapat ditindaklanjuti secara tepat dan menjadikan hasil evaluasi sebagai dasar perbaikan.",
+          "Membuka ruang kolaborasi yang mempertemukan siswa, organisasi, dan pihak sekolah.",
+          "Membentuk MPK yang peka terhadap kondisi nyata dan berani melakukan perbaikan."
+        ]
+      },
+      {
+        id: "mpk_2",
+        number: "02",
+        leadName: "Arsyah Valentina Gobel",
+        classes: "SMAN 80 Jakarta",
+        tagline: "Mendengar Lebih Dekat, Bergerak Lebih Hebat.",
+        posterUrl: "https://cdn.phototourl.com/free/2026-09-19-7f766bc0-f543-4db6-bcc2-12f9cda1423f.jpg",
+        youtubeUrl: "https://www.youtube.com/watch?v=fJ9rUzIMcZQ",
+        votes: 145,
+        color: "from-amber-500 via-amber-400 to-orange-500",
+        visi: "Menjadikan MPK sebagai resonansi suara siswa yang mampu mengubah aspirasi menjadi aksi melalui komunikasi yang terbuka, pengawasan yang bertanggung jawab, serta kolaborasi seluruh warga SMAN 80.",
+        misi: [
+          "Mendengar dan menyalurkan aspirasi siswa secara terbuka agar setiap suara memiliki ruang dan dapat disampaikan kepada pihak yang tepat.",
+          "Mengawal dan mengevaluasi kinerja OSIS secara objektif dan konstruktif untuk memastikan setiap program berjalan sesuai tujuan.",
+          "Membangun budaya transparansi dan kolaborasi antara MPK, OSIS, siswa, dan pihak sekolah melalui komunikasi yang terbuka dan bertanggung jawab."
+        ]
+      },
+      {
+        id: "mpk_3",
+        number: "03",
+        leadName: "Thania Putri Kurniawan",
+        classes: "SMAN 80 Jakarta",
+        tagline: "Suara Siswa, Aksi MPK.",
+        posterUrl: "https://cdn.phototourl.com/free/2026-09-19-a8f1b5ab-e1a4-44cb-9ef7-d10842c8e6a0.jpg",
+        youtubeUrl: "https://www.youtube.com/watch?v=9bZkp7q19f0",
+        votes: 112,
+        color: "from-amber-500 via-amber-400 to-orange-500",
+        visi: "Mewujudkan Majelis Perwakilan Kelas (MPK) yang Profesional dan Responsif sebagai mitra pengawas OSIS yang berdampak nyata, sekaligus menjadi jembatan utama komunikasi aspiratif yang mendorong terciptanya lingkungan yang aktif, nyaman, dan mendukung kesejahteraan siswa.",
+        misi: [
+          "Evaluasi kinerja terukur.",
+          "Optimalisasi dampak.",
+          "Peningkatan keaktifan."
+        ]
+      },
+      {
+        id: "mpk_4",
+        number: "04",
+        leadName: "Yosua Rimora Alexander",
+        classes: "SMAN 80 Jakarta",
+        tagline: "MPK HEBAT, SISWA TERLIBAT.",
+        posterUrl: "https://cdn.phototourl.com/member/2026-09-19-9a7f3808-68c5-4702-aaf7-eecbabf39e00.jpg",
+        youtubeUrl: "https://www.youtube.com/watch?v=kJQP7kiw5Fk",
+        votes: 139,
+        color: "from-amber-500 via-amber-400 to-orange-500",
+        visi: "Menjadikan MPK sebagai wadah aspirasi yang terbuka bagi seluruh siswa-siswi SMA Negeri 80 Jakarta demi mewujudkan organisasi yang jujur, berintegritas, dan transparan.",
+        misi: [
+          "Mendengarkan: Menampung dan memperjuangkan seluruh aspirasi siswa SMAN 80 Jakarta.",
+          "Mengawal: Mengawasi dan memastikan seluruh program kerja dengan baik, jujur dan bertanggung jawab.",
+          "Terbuka: Membuka ruang komunikasi yang mudah diakses bagi seluruh siswa."
+        ]
+      }
+    ];
+
+    let candidatesOSIS = JSON.parse(JSON.stringify(DEFAULT_CANDIDATES_OSIS));
+    let candidatesMPK = JSON.parse(JSON.stringify(DEFAULT_CANDIDATES_MPK));
+    let voteLogs = [{ time: new Date().toLocaleTimeString('id-ID'), text: "Sistem Pemilihan Ketua OSIS dan MPK SMAN 80 aktif." }];
+    let adminLoggedIn = false;
+    let customMainPoster = DEFAULT_MAIN_POSTER;
+    let customLogo = DEFAULT_LOGO_URL;
+    let countdownVal = 60;
+    let countdownTimer = null;
+
+    const DEFAULT_80_BADGE_HTML = `
+      <div class="w-full h-full flex flex-col items-center justify-center select-none">
+        <span class="font-western text-2xl text-transparent bg-clip-text bg-gradient-to-b from-amber-200 via-amber-400 to-orange-500 leading-none">80</span>
+        <span class="text-[7px] font-mono tracking-widest text-amber-300/80 uppercase font-black -mt-0.5">SMAN</span>
+      </div>
+    `;
+
+    function getYoutubeEmbedUrl(url, autoplay = true) {
+      if (!url) return "https://www.youtube.com/embed/dQw4w9WgXcQ";
+      let videoId = "";
+      const shortMatch = url.match(/youtu\.be\/([a-zA-Z0-9_-]{11})/);
+      if (shortMatch && shortMatch[1]) videoId = shortMatch[1];
+      else {
+        const longMatch = url.match(/[?&]v=([a-zA-Z0-9_-]{11})/);
+        if (longMatch && longMatch[1]) videoId = longMatch[1];
+        else {
+          const embedMatch = url.match(/embed\/([a-zA-Z0-9_-]{11})/);
+          if (embedMatch && embedMatch[1]) videoId = embedMatch[1];
+        }
+      }
+      const param = autoplay ? "?autoplay=1&rel=0" : "?autoplay=0&rel=0";
+      return videoId ? `https://www.youtube.com/embed/${videoId}${param}` : url;
+    }
+
+    function renderCustomLogo() {
+      const inner = document.getElementById("brand-logo-inner");
+      const preview2 = document.getElementById("admin-preview-logo-2");
+      const activeLogo = (customLogo && customLogo.trim() !== "") ? customLogo : DEFAULT_LOGO_URL;
+
+      if (activeLogo) {
+        const imgTag = `<img src="${activeLogo}" alt="Logo 80" class="w-full h-full object-cover p-0 object-center" onerror="this.onerror=null; this.src='https://placehold.co/100x120/120a04/f59e0b?text=80';" />`;
+        if (inner) inner.innerHTML = imgTag;
+        if (preview2) preview2.innerHTML = imgTag;
+      } else {
+        if (inner) inner.innerHTML = DEFAULT_80_BADGE_HTML;
+        if (preview2) preview2.innerHTML = `<span class="font-western text-xl text-amber-400">80</span>`;
+      }
+    }
+
+    function resetCustomLogo() {
+      customLogo = DEFAULT_LOGO_URL;
+      localStorage.setItem("nexora_v3_logo", DEFAULT_LOGO_URL);
+      const inpLogo = document.getElementById("admin-global-logo-input");
+      if (inpLogo) inpLogo.value = DEFAULT_LOGO_URL;
+      if (db) db.ref("nexora_live_data/customLogo").set(DEFAULT_LOGO_URL);
+      renderCustomLogo();
+      showToast("Logo berhasil disetel ulang!", "info");
+    }
+
+    function renderCustomMainPoster() {
+      const wrapper = document.getElementById("main-poster-wrapper");
+      if (!wrapper) return;
+      const targetPoster = (customMainPoster && customMainPoster.trim() !== "") ? customMainPoster : DEFAULT_MAIN_POSTER;
+      wrapper.innerHTML = `
+        <img src="${targetPoster}" 
+             alt="Poster Utama NEXORA" 
+             class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" 
+             onerror="this.onerror=null; this.src='https://placehold.co/600x1000/120a04/f59e0b?text=NEXORA+2026';" />
+        <div class="absolute bottom-2.5 sm:bottom-3 left-3 sm:left-4 right-3 sm:right-4 flex justify-center pointer-events-none">
+          <span class="px-2.5 sm:px-3 py-1 rounded-lg text-[9px] sm:text-[10px] font-western bg-desert-950/90 text-amber-300 font-bold border border-amber-500/40 backdrop-blur-md shadow-lg">
+            SMAN 80 • POSTER DIGITAL RESMI
+          </span>
+        </div>
+      `;
+    }
+
+    function resetMainPoster() {
+      customMainPoster = DEFAULT_MAIN_POSTER;
+      localStorage.setItem("nexora_v3_main_poster", DEFAULT_MAIN_POSTER);
+      const inpPoster = document.getElementById("admin-global-poster-input");
+      if (inpPoster) inpPoster.value = DEFAULT_MAIN_POSTER;
+      if (db) db.ref("nexora_live_data/customMainPoster").set(DEFAULT_MAIN_POSTER);
+      renderCustomMainPoster();
+      showToast("Poster dikembalikan ke poster default!", "info");
+    }
+
+    function initData() {
+      const localOSIS = localStorage.getItem("nexora_v13_candidates_osis");
+      const localMPK = localStorage.getItem("nexora_v13_candidates_mpk");
+      const localLogs = localStorage.getItem("nexora_v13_vote_logs");
+      const localPoster = localStorage.getItem("nexora_v3_main_poster");
+      const localLogo = localStorage.getItem("nexora_v3_logo");
+
+      if (localOSIS) candidatesOSIS = JSON.parse(localOSIS);
+      if (localMPK) candidatesMPK = JSON.parse(localMPK);
+      if (localLogs) voteLogs = JSON.parse(localLogs);
+      
+      customMainPoster = localPoster ? localPoster : DEFAULT_MAIN_POSTER;
+      renderCustomMainPoster(); 
+
+      customLogo = localLogo ? localLogo : DEFAULT_LOGO_URL;
+      renderCustomLogo(); 
+
+      renderAll();
+      start60SecondCountdown();
+
+      if (db) {
+        db.ref("nexora_live_data").on("value", (snapshot) => {
+          const val = snapshot.val();
+          if (val) {
+            if (val.candidatesOSIS) candidatesOSIS = val.candidatesOSIS;
+            if (val.candidatesMPK) candidatesMPK = val.candidatesMPK;
+            if (val.voteLogs) voteLogs = val.voteLogs;
+
+            if (val.customLogo !== undefined && val.customLogo.trim() !== "") {
+              customLogo = val.customLogo;
+            } else {
+              customLogo = DEFAULT_LOGO_URL;
+            }
+            renderCustomLogo();
+            const inpLogo = document.getElementById("admin-global-logo-input");
+            if (inpLogo) inpLogo.value = customLogo;
+
+            if (val.customMainPoster !== undefined && val.customMainPoster.trim() !== "") {
+              customMainPoster = val.customMainPoster;
+            } else {
+              customMainPoster = DEFAULT_MAIN_POSTER;
+            }
+            renderCustomMainPoster();
+            const inpPoster = document.getElementById("admin-global-poster-input");
+            if (inpPoster) inpPoster.value = customMainPoster;
+            
+            localStorage.setItem("nexora_v13_candidates_osis", JSON.stringify(candidatesOSIS));
+            localStorage.setItem("nexora_v13_candidates_mpk", JSON.stringify(candidatesMPK));
+            localStorage.setItem("nexora_v13_vote_logs", JSON.stringify(voteLogs));
+            localStorage.setItem("nexora_v3_main_poster", customMainPoster);
+            localStorage.setItem("nexora_v3_logo", customLogo);
+
+            renderAll();
+            document.getElementById("last-updated-text").innerText = `Cloud ${new Date().toLocaleTimeString('id-ID')}`;
+          }
+        });
+      }
+    }
+
+    function saveAdminData() {
+      const logoInput = document.getElementById("admin-global-logo-input");
+      if (logoInput) {
+        customLogo = logoInput.value.trim() || DEFAULT_LOGO_URL;
+        renderCustomLogo();
+      }
+
+      const posterInput = document.getElementById("admin-global-poster-input");
+      if (posterInput) {
+        customMainPoster = posterInput.value.trim() || DEFAULT_MAIN_POSTER;
+        renderCustomMainPoster();
+      }
+
+      candidatesOSIS.forEach(c => {
+        const v = document.getElementById(`admin-vote-osis-${c.id}`)?.value;
+        const p = document.getElementById(`media-osis-poster-${c.id}`)?.value;
+        const y = document.getElementById(`media-osis-yt-${c.id}`)?.value;
+        const tag = document.getElementById(`media-osis-slogan-${c.id}`)?.value;
+        const visiVal = document.getElementById(`media-osis-visi-${c.id}`)?.value;
+        const misiVal = document.getElementById(`media-osis-misi-${c.id}`)?.value;
+
+        if (v !== undefined) c.votes = Math.max(0, parseInt(v) || 0);
+        if (p !== undefined) c.posterUrl = p.trim();
+        if (y !== undefined) c.youtubeUrl = y.trim();
+        if (tag !== undefined) c.tagline = tag.trim();
+        if (visiVal !== undefined) c.visi = visiVal.trim();
+        if (misiVal !== undefined) {
+          c.misi = misiVal.split('\n').map(m => m.replace(/^[•\-\*\d\.]+\s*/, '').trim()).filter(Boolean);
+        }
+      });
+
+      candidatesMPK.forEach(c => {
+        const v = document.getElementById(`admin-vote-mpk-${c.id}`)?.value;
+        const p = document.getElementById(`media-mpk-poster-${c.id}`)?.value;
+        const y = document.getElementById(`media-mpk-yt-${c.id}`)?.value;
+        const tag = document.getElementById(`media-mpk-slogan-${c.id}`)?.value;
+        const visiVal = document.getElementById(`media-mpk-visi-${c.id}`)?.value;
+        const misiVal = document.getElementById(`media-mpk-misi-${c.id}`)?.value;
+
+        if (v !== undefined) c.votes = Math.max(0, parseInt(v) || 0);
+        if (p !== undefined) c.posterUrl = p.trim();
+        if (y !== undefined) c.youtubeUrl = y.trim();
+        if (tag !== undefined) c.tagline = tag.trim();
+        if (visiVal !== undefined) c.visi = visiVal.trim();
+        if (misiVal !== undefined) {
+          c.misi = misiVal.split('\n').map(m => m.replace(/^[•\-\*\d\.]+\s*/, '').trim()).filter(Boolean);
+        }
+      });
+
+      voteLogs.unshift({
+        time: new Date().toLocaleTimeString('id-ID'),
+        text: "Panitia menyinkronkan data URL media, slogan, visi & misi."
+      });
+
+      localStorage.setItem("nexora_v13_candidates_osis", JSON.stringify(candidatesOSIS));
+      localStorage.setItem("nexora_v13_candidates_mpk", JSON.stringify(candidatesMPK));
+      localStorage.setItem("nexora_v13_vote_logs", JSON.stringify(voteLogs));
+      localStorage.setItem("nexora_v3_main_poster", customMainPoster);
+      localStorage.setItem("nexora_v3_logo", customLogo);
+
+      if (db) {
+        db.ref("nexora_live_data").set({
+          customLogo: customLogo,
+          customMainPoster: customMainPoster,
+          candidatesOSIS: candidatesOSIS,
+          candidatesMPK: candidatesMPK,
+          voteLogs: voteLogs,
+          timestamp: Date.now()
+        }).then(() => {
+          showToast("Seluruh data visi & misi berhasil disinkronkan!", "success");
+        }).catch((err) => {
+          console.error(err);
+          showToast("Tersimpan lokal. Pastikan URL database Firebase aktif!", "info");
+        });
+      } else {
+        showToast("Tersimpan di browser lokal!", "success");
+      }
+
+      renderAll();
+    }
+
+    function switchTab(tab) {
+      const homeTab = document.getElementById("tab-home");
+      const votingTab = document.getElementById("tab-voting");
+      const adminTab = document.getElementById("tab-admin");
+
+      const btnHome = document.getElementById("nav-btn-home");
+      const btnVoting = document.getElementById("nav-btn-voting");
+      const mHome = document.getElementById("mobile-nav-home");
+      const mVoting = document.getElementById("mobile-nav-voting");
+
+      homeTab.classList.add("hidden");
+      votingTab.classList.add("hidden");
+      adminTab.classList.add("hidden");
+
+      const inactiveCls = "flex items-center gap-2 px-4 py-2 rounded-xl font-semibold text-xs lg:text-sm transition-all text-desert-300 hover:text-amber-300 hover:bg-desert-800/60";
+      const activeCls = "flex items-center gap-2 px-4 py-2 rounded-xl font-semibold text-xs lg:text-sm transition-all bg-gradient-to-r from-amber-600 to-amber-500 text-desert-950 shadow-md";
+
+      btnHome.className = inactiveCls;
+      btnVoting.className = inactiveCls;
+      mHome.className = "flex items-center justify-center gap-1.5 py-2 rounded-xl text-xs font-medium text-desert-300";
+      mVoting.className = "flex items-center justify-center gap-1.5 py-2 rounded-xl text-xs font-medium text-desert-300";
+
+      if (tab === "home") {
+        homeTab.classList.remove("hidden");
+        btnHome.className = activeCls;
+        mHome.className = "flex items-center justify-center gap-1.5 py-2 rounded-xl text-xs font-bold text-amber-400 bg-desert-900/90 border border-amber-700/40";
+      } else if (tab === "voting") {
+        votingTab.classList.remove("hidden");
+        btnVoting.className = activeCls;
+        mVoting.className = "flex items-center justify-center gap-1.5 py-2 rounded-xl text-xs font-bold text-amber-400 bg-desert-900/90 border border-amber-700/40";
+        renderLiveCounts();
+      } else if (tab === "admin") {
+        if (!adminLoggedIn) {
+          openAdminModal();
+          return;
+        }
+        adminTab.classList.remove("hidden");
+        renderAdminInputs();
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      lucide.createIcons();
+    }
+
+    function switchAdminSubTab(sub) {
+      const pageVotes = document.getElementById("admin-subpage-votes");
+      const pageMedia = document.getElementById("admin-subpage-media");
+      const btnVotes = document.getElementById("admin-subtab-btn-votes");
+      const btnMedia = document.getElementById("admin-subtab-btn-media");
+
+      if (sub === 'votes') {
+        pageVotes.classList.remove("hidden");
+        pageMedia.classList.add("hidden");
+        btnVotes.className = "flex-1 sm:flex-initial px-3 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all bg-amber-500 text-desert-950 shadow";
+        btnMedia.className = "flex-1 sm:flex-initial px-3 sm:px-4 py-2 rounded-xl text-xs font-semibold text-desert-300 hover:text-amber-300 transition-all truncate";
+      } else {
+        pageVotes.classList.add("hidden");
+        pageMedia.classList.remove("hidden");
+        btnMedia.className = "flex-1 sm:flex-initial px-3 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all bg-amber-500 text-desert-950 shadow truncate";
+        btnVotes.className = "flex-1 sm:flex-initial px-3 sm:px-4 py-2 rounded-xl text-xs font-semibold text-desert-300 hover:text-amber-300 transition-all";
+      }
+      lucide.createIcons();
+    }
+
+    function openAdminModal() {
+      if (adminLoggedIn) {
+        switchTab('admin');
+        return;
+      }
+      const modal = document.getElementById("admin-modal");
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+      document.getElementById("admin-pin-input").value = "";
+      document.getElementById("admin-pin-input").focus();
+      lucide.createIcons();
+    }
+
+    function closeAdminModal() {
+      const modal = document.getElementById("admin-modal");
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+    }
+
+    function verifyAdminPin() {
+      const pin = document.getElementById("admin-pin-input").value.trim();
+      if (pin === "Akukece01") {
+        adminLoggedIn = true;
+        closeAdminModal();
+        
+        document.getElementById("admin-login-btn").classList.add("hidden");
+        document.getElementById("admin-session-badge").classList.remove("hidden");
+        document.getElementById("admin-session-badge").classList.add("flex");
+
+        switchTab('admin');
+        showToast("Login Berhasil! Studio Panitia terbuka.", "success");
+      } else {
+        showToast("Sandi panitia salah! Silakan coba lagi.", "error");
+      }
+    }
+
+    function logoutAdmin() {
+      adminLoggedIn = false;
+      document.getElementById("admin-login-btn").classList.remove("hidden");
+      document.getElementById("admin-session-badge").classList.add("hidden");
+      document.getElementById("admin-session-badge").classList.remove("flex");
+      switchTab('voting');
+      showToast("Sesi panitia dikunci.", "info");
+    }
+
+    function start60SecondCountdown() {
+      if (countdownTimer) clearInterval(countdownTimer);
+      countdownVal = 60;
+      updateTimerUI(60);
+
+      countdownTimer = setInterval(() => {
+        countdownVal--;
+        if (countdownVal <= 0) {
+          countdownVal = 60;
+          renderAll();
+          document.getElementById("last-updated-text").innerText = `Update ${new Date().toLocaleTimeString('id-ID')}`;
+        }
+        updateTimerUI(countdownVal);
+      }, 1000);
+    }
+
+    function updateTimerUI(seconds) {
+      const lbl = document.getElementById("countdown-seconds");
+      const circ = document.getElementById("timer-circle");
+      const circMobile = document.getElementById("timer-circle-mobile");
+      if (lbl) lbl.innerText = seconds < 10 ? "0" + seconds : seconds;
+      if (circ) {
+        const total = 100.53;
+        circ.style.strokeDashoffset = total - (seconds / 60) * total;
+      }
+      if (circMobile) {
+        const totalMobile = 81.68;
+        circMobile.style.strokeDashoffset = totalMobile - (seconds / 60) * totalMobile;
+      }
+    }
+
+    function refreshDataManual() {
+      const icon = document.getElementById("refresh-icon");
+      if (icon) icon.classList.add("animate-spin");
+      setTimeout(() => {
+        if (icon) icon.classList.remove("animate-spin");
+        countdownVal = 60;
+        updateTimerUI(60);
+        renderAll();
+        document.getElementById("last-updated-text").innerText = `Update ${new Date().toLocaleTimeString('id-ID')}`;
+        showToast("Data suara disinkronkan!", "success");
+      }, 400);
+    }
+
+    function renderAll() {
+      renderLiveCounts();
+      renderCandidateCards();
+      renderAdminInputs();
+      renderLogs();
+      renderCustomLogo();
+      renderCustomMainPoster();
+      lucide.createIcons();
+    }
+
+    function renderLiveCounts() {
+      const totalOsis = candidatesOSIS.reduce((acc, curr) => acc + Number(curr.votes || 0), 0);
+      const totalMpk = candidatesMPK.reduce((acc, curr) => acc + Number(curr.votes || 0), 0);
+
+      document.getElementById("metric-total-osis").innerText = totalOsis.toLocaleString("id-ID") + " Suara";
+      document.getElementById("metric-total-mpk").innerText = totalMpk.toLocaleString("id-ID") + " Suara";
+
+      const pctOsis = ((totalOsis / DPT_TOTAL) * 100).toFixed(1);
+      const pctMpk = ((totalMpk / DPT_TOTAL) * 100).toFixed(1);
+      
+      const elPctOsis = document.getElementById("metric-percentage-osis");
+      const elPctMpk = document.getElementById("metric-percentage-mpk");
+      const elBarOsis = document.getElementById("metric-dpt-bar-osis");
+      const elBarMpk = document.getElementById("metric-dpt-bar-mpk");
+
+      if (elPctOsis) elPctOsis.innerText = `${pctOsis}%`;
+      if (elPctMpk) elPctMpk.innerText = `${pctMpk}%`;
+      if (elBarOsis) elBarOsis.style.width = `${Math.min(pctOsis, 100)}%`;
+      if (elBarMpk) elBarMpk.style.width = `${Math.min(pctMpk, 100)}%`;
+
+      renderLaman1PreviewCards(totalOsis, totalMpk);
+
+      document.getElementById("live-bars-osis").innerHTML = candidatesOSIS.map(c => {
+        const pct = totalOsis > 0 ? ((c.votes / totalOsis) * 100).toFixed(1) : 0;
+        const candidateTitle = c.viceName ? `${c.leadName} & ${c.viceName}` : c.leadName;
+        return `
+          <div>
+            <div class="flex justify-between text-[11px] sm:text-xs font-semibold mb-1">
+              <span class="text-desert-200 truncate mr-2">No. ${c.number}: ${candidateTitle}</span>
+              <span class="text-amber-400 font-mono shrink-0">${c.votes} suara (${pct}%)</span>
+            </div>
+            <div class="w-full bg-desert-950 rounded-full h-3 sm:h-3.5 p-0.5 border border-desert-800">
+              <div class="bg-gradient-to-r ${c.color} h-full rounded-full transition-all duration-700 flex items-center justify-end pr-1" style="width: ${Math.max(pct, 4)}%">
+                <span class="text-[9px] font-black text-desert-950">${pct > 8 ? pct + '%' : ''}</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      document.getElementById("live-bars-mpk").innerHTML = candidatesMPK.map(c => {
+        const pct = totalMpk > 0 ? ((c.votes / totalMpk) * 100).toFixed(1) : 0;
+        const barColor = c.color || "from-orange-500 to-amber-500";
+        return `
+          <div>
+            <div class="flex justify-between text-[11px] sm:text-xs font-semibold mb-1">
+              <span class="text-desert-200 truncate mr-2">No. ${c.number}: ${c.leadName}</span>
+              <span class="text-orange-400 font-mono font-bold shrink-0">${c.votes} suara (${pct}%)</span>
+            </div>
+            <div class="w-full bg-desert-950 rounded-full h-3.5 p-0.5 border border-desert-800">
+              <div class="bg-gradient-to-r ${barColor} h-full rounded-full transition-all duration-700 flex items-center justify-end pr-1" style="width: ${Math.max(pct, 4)}%">
+                <span class="text-[9px] font-black text-desert-950">${pct > 8 ? pct + '%' : ''}</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderLaman1PreviewCards(totalOsis, totalMpk) {
+      const elOsis = document.getElementById("laman1-preview-osis");
+      const elMpk = document.getElementById("laman1-preview-mpk");
+
+      if (elOsis) {
+        elOsis.innerHTML = candidatesOSIS.map(c => {
+          const pct = totalOsis > 0 ? ((c.votes / totalOsis) * 100).toFixed(1) : 0;
+          return `
+            <div onclick="switchTab('voting')" class="bg-desert-900/80 hover:bg-desert-850 border border-desert-800 hover:border-amber-500/50 rounded-2xl p-3.5 sm:p-4 flex items-center gap-3 cursor-pointer transition transform hover:-translate-y-0.5 shadow-md">
+              <span class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-orange-500 text-desert-950 font-western font-black flex items-center justify-center text-xs sm:text-sm shrink-0 shadow-md border border-amber-300/40">${c.number}</span>
+              <div class="min-w-0 flex-1">
+                <p class="text-xs font-bold text-amber-100 truncate">${c.leadName}</p>
+                <div class="flex items-center gap-1.5 mt-1">
+                  <span class="px-2 py-0.5 rounded-md bg-amber-500/20 text-amber-300 font-mono font-bold text-[9px] sm:text-[10px] border border-amber-500/30">
+                    ${c.votes} Suara (${pct}%)
+                  </span>
+                </div>
+              </div>
+              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-desert-500 group-hover:text-amber-400 shrink-0"></i>
+            </div>
+          `;
+        }).join("");
+      }
+
+      if (elMpk) {
+        elMpk.innerHTML = candidatesMPK.map(c => {
+          const pct = totalMpk > 0 ? ((c.votes / totalMpk) * 100).toFixed(1) : 0;
+          return `
+            <div onclick="switchTab('voting')" class="bg-desert-900/80 hover:bg-desert-850 border border-desert-800 hover:border-orange-500/50 rounded-2xl p-3.5 sm:p-4 flex items-center gap-3 cursor-pointer transition transform hover:-translate-y-0.5 shadow-md">
+              <span class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-orange-500 text-desert-950 font-western font-black flex items-center justify-center text-xs shrink-0 shadow-md border border-amber-300/40">${c.number}</span>
+              <div class="min-w-0 flex-1">
+                <p class="text-xs font-bold text-orange-100 truncate">${c.leadName}</p>
+                <div class="flex items-center gap-1.5 mt-1">
+                  <span class="px-2 py-0.5 rounded-md bg-orange-500/20 text-orange-300 font-mono font-bold text-[9px] sm:text-[10px] border border-orange-500/30">
+                    ${c.votes} Suara (${pct}%)
+                  </span>
+                </div>
+              </div>
+              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-desert-500 group-hover:text-orange-400 shrink-0"></i>
+            </div>
+          `;
+        }).join("");
+      }
+    }
+
+    function renderCandidateCards() {
+      const osisContainer = document.getElementById("cards-osis-grid");
+      const mpkContainer = document.getElementById("cards-mpk-grid");
+      const totalOsis = candidatesOSIS.reduce((acc, curr) => acc + Number(curr.votes || 0), 0);
+      const totalMpk = candidatesMPK.reduce((acc, curr) => acc + Number(curr.votes || 0), 0);
+
+      if (osisContainer) {
+        osisContainer.innerHTML = candidatesOSIS.map(c => {
+          const pct = totalOsis > 0 ? ((c.votes / totalOsis) * 100).toFixed(1) : 0;
+          const candidateTitle = c.viceName ? `${c.leadName} & ${c.viceName}` : c.leadName;
+          const embedUrl = getYoutubeEmbedUrl(c.youtubeUrl, false);
+          return `
+            <div class="bg-gradient-to-br from-desert-900/95 via-desert-900/80 to-desert-950 border border-desert-700/80 rounded-2xl sm:rounded-3xl p-4 sm:p-7 shadow-saloon">
+              <div class="flex flex-row items-center justify-between gap-2 pb-3 sm:pb-4 mb-4 sm:mb-5 border-b border-desert-800">
+                <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                  <span class="px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-orange-500 text-desert-950 font-western font-black text-xs sm:text-sm tracking-wider shadow-md border border-amber-300/50 shrink-0">
+                    NO ${c.number}
+                  </span>
+                  <div class="min-w-0">
+                    <h4 class="font-bold text-sm sm:text-lg text-amber-100 truncate">${candidateTitle}</h4>
+                    <p class="text-[10px] sm:text-xs text-desert-400 italic truncate">Calon Ketua OSIS SMAN 80</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                  <div class="px-2 sm:px-3 py-1 sm:py-1.5 rounded-xl bg-desert-950 border border-amber-500/40 text-right">
+                    <span class="text-[9px] sm:text-[10px] text-desert-400 block font-mono leading-none">Suara</span>
+                    <span class="text-[11px] sm:text-xs font-bold text-amber-300 font-mono">${c.votes} (${pct}%)</span>
+                  </div>
+                  <button onclick="openCandidateModal('osis', '${c.id}')" 
+                          class="px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl bg-desert-800 hover:bg-desert-700 border border-desert-600 text-amber-300 text-[11px] sm:text-xs font-bold transition flex items-center gap-1">
+                    <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
+                    <span>Visi & Misi</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 items-stretch">
+                <!-- Poster Paslon: Fit Rapat HP & Laptop -->
+                <div class="lg:col-span-5 flex flex-col items-center justify-center w-full">
+                  <div class="w-full aspect-[3/4] max-h-[460px] rounded-2xl overflow-hidden border border-amber-500/50 shadow-lg bg-desert-950 flex items-center justify-center p-0 relative group cursor-pointer"
+                       onclick="openCustomPoster('${c.posterUrl}', 'Poster Paslon No. ${c.number}: ${candidateTitle}')">
+                    <img src="${c.posterUrl}" alt="${candidateTitle}" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x800/211309/f59e0b?text=Poster+No+${c.number}';" />
+                    <div class="absolute inset-0 bg-desert-950/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center gap-2 backdrop-blur-[1px]">
+                      <span class="px-3 py-1.5 rounded-xl bg-amber-500 text-desert-950 font-bold text-xs flex items-center gap-1 shadow">
+                        <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i> Perbesar Poster
+                      </span>
+                    </div>
+                    <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-desert-950/80 border border-amber-500/50 text-[9px] sm:text-[10px] text-amber-300 font-mono font-bold">
+                      POSTER RESMI
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Sisi Kanan: Video Orasi + Banner Slogan -->
+                <div class="lg:col-span-7 flex flex-col justify-between space-y-3">
+                  <div class="relative w-full aspect-video rounded-2xl overflow-hidden border border-desert-700 bg-black shadow-lg">
+                    <iframe class="w-full h-full" src="${embedUrl}" 
+                            title="Video Orasi No. ${c.number}" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                  </div>
+
+                  <!-- Banner Slogan Resmi OSIS -->
+                  <div class="bg-gradient-to-r from-desert-950 via-desert-900 to-desert-950 border border-amber-500/40 rounded-2xl p-3.5 sm:p-4 shadow-lg flex flex-col justify-center relative overflow-hidden group">
+                    <div class="absolute -right-3 -bottom-3 text-amber-500/10 pointer-events-none">
+                      <i data-lucide="quote" class="w-16 h-16 sm:w-20 sm:h-20"></i>
+                    </div>
+                    <div class="flex items-center justify-between mb-1 z-10">
+                      <span class="text-[9px] sm:text-[10px] font-mono tracking-widest text-amber-400 font-bold uppercase flex items-center gap-1.5">
+                        <i data-lucide="sparkles" class="w-3 h-3 text-amber-400"></i> SLOGAN RESMI PASLON ${c.number}
+                      </span>
+                      <span class="text-[9px] sm:text-[10px] font-western text-desert-400">NEXORA 2026</span>
+                    </div>
+                    <p class="font-western text-xs sm:text-base text-amber-100 italic tracking-wide z-10 leading-snug">
+                      "${c.tagline || ''}"
+                    </p>
+                  </div>
+
+                  <div class="flex items-center justify-between pt-0.5 text-xs">
+                    <span class="text-desert-400 flex items-center gap-1 text-[11px] sm:text-xs">
+                      <i data-lucide="youtube" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-red-500"></i> Video Orasi & Kampanye Resmi
+                    </span>
+                    <button onclick="openYoutubePlayer('${c.youtubeUrl}', 'Video Orasi Paslon No. ${c.number}: ${candidateTitle}')"
+                            class="text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1 text-[11px] sm:text-xs">
+                      <span>Layar Penuh</span>
+                      <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join("");
+      }
+
+      if (mpkContainer) {
+        mpkContainer.innerHTML = candidatesMPK.map(c => {
+          const pct = totalMpk > 0 ? ((c.votes / totalMpk) * 100).toFixed(1) : 0;
+          const embedUrl = getYoutubeEmbedUrl(c.youtubeUrl, false);
+          return `
+            <div class="bg-gradient-to-br from-desert-900/95 via-desert-900/80 to-desert-950 border border-desert-700/80 rounded-2xl sm:rounded-3xl p-4 sm:p-7 shadow-saloon">
+              <div class="flex flex-row items-center justify-between gap-2 pb-3 sm:pb-4 mb-4 sm:mb-5 border-b border-desert-800">
+                <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                  <span class="px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-orange-500 text-desert-950 font-western font-black text-xs sm:text-sm tracking-wider shadow-md border border-amber-300/50 shrink-0">
+                    NO ${c.number}
+                  </span>
+                  <div class="min-w-0">
+                    <h4 class="font-bold text-sm sm:text-lg text-orange-100 truncate">${c.leadName}</h4>
+                    <p class="text-[10px] sm:text-xs text-desert-400 italic truncate">Calon Ketua Umum MPK SMAN 80</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                  <div class="px-2 sm:px-3 py-1 sm:py-1.5 rounded-xl bg-desert-950 border border-orange-500/40 text-right">
+                    <span class="text-[9px] sm:text-[10px] text-desert-400 block font-mono leading-none">Suara</span>
+                    <span class="text-[11px] sm:text-xs font-bold text-orange-300 font-mono">${c.votes} (${pct}%)</span>
+                  </div>
+                  <button onclick="openCandidateModal('mpk', '${c.id}')" 
+                          class="px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl bg-desert-800 hover:bg-desert-700 border border-desert-600 text-orange-300 text-[11px] sm:text-xs font-bold transition flex items-center gap-1">
+                    <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
+                    <span>Visi & Misi</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 items-stretch">
+                <!-- Poster MPK: Fit Rapat HP & Laptop -->
+                <div class="lg:col-span-5 flex flex-col items-center justify-center w-full">
+                  <div class="w-full aspect-[3/4] max-h-[460px] rounded-2xl overflow-hidden border border-orange-500/50 shadow-lg bg-desert-950 flex items-center justify-center p-0 relative group cursor-pointer"
+                       onclick="openCustomPoster('${c.posterUrl}', 'Poster Calon Ketum MPK No. ${c.number}: ${c.leadName}')">
+                    <img src="${c.posterUrl}" alt="${c.leadName}" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x800/211309/ea580c?text=Poster+MPK+${c.number}';" />
+                    <div class="absolute inset-0 bg-desert-950/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center gap-2 backdrop-blur-[1px]">
+                      <span class="px-3 py-1.5 rounded-xl bg-orange-500 text-desert-950 font-bold text-xs flex items-center gap-1 shadow">
+                        <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i> Perbesar Poster
+                      </span>
+                    </div>
+                    <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-desert-950/80 border border-orange-500/50 text-[9px] sm:text-[10px] text-orange-300 font-mono font-bold">
+                      POSTER RESMI MPK
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Sisi Kanan: Video Orasi + Banner Slogan -->
+                <div class="lg:col-span-7 flex flex-col justify-between space-y-3">
+                  <div class="relative w-full aspect-video rounded-2xl overflow-hidden border border-desert-700 bg-black shadow-lg">
+                    <iframe class="w-full h-full" src="${embedUrl}" 
+                            title="Video Orasi MPK No. ${c.number}" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                  </div>
+
+                  <!-- Banner Slogan Resmi MPK -->
+                  <div class="bg-gradient-to-r from-desert-950 via-desert-900 to-desert-950 border border-orange-500/40 rounded-2xl p-3.5 sm:p-4 shadow-lg flex flex-col justify-center relative overflow-hidden group">
+                    <div class="absolute -right-3 -bottom-3 text-orange-500/10 pointer-events-none">
+                      <i data-lucide="quote" class="w-16 h-16 sm:w-20 sm:h-20"></i>
+                    </div>
+                    <div class="flex items-center justify-between mb-1 z-10">
+                      <span class="text-[9px] sm:text-[10px] font-mono tracking-widest text-orange-400 font-bold uppercase flex items-center gap-1.5">
+                        <i data-lucide="sparkles" class="w-3 h-3 text-orange-400"></i> SLOGAN RESMI KANDIDAT ${c.number}
+                      </span>
+                      <span class="text-[9px] sm:text-[10px] font-western text-desert-400">NEXORA 2026</span>
+                    </div>
+                    <p class="font-western text-xs sm:text-base text-orange-100 italic tracking-wide z-10 leading-snug">
+                      "${c.tagline || ''}"
+                    </p>
+                  </div>
+
+                  <div class="flex items-center justify-between pt-0.5 text-xs">
+                    <span class="text-desert-400 flex items-center gap-1 text-[11px] sm:text-xs">
+                      <i data-lucide="youtube" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-red-500"></i> Video Orasi & Pengenalan MPK
+                    </span>
+                    <button onclick="openYoutubePlayer('${c.youtubeUrl}', 'Video Orasi MPK No. ${c.number}: ${c.leadName}')"
+                            class="text-orange-400 hover:text-orange-300 font-semibold flex items-center gap-1 text-[11px] sm:text-xs">
+                      <span>Layar Penuh</span>
+                      <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join("");
+      }
+    }
+
+    function renderAdminInputs() {
+      const votesOsis = document.getElementById("admin-votes-osis-container");
+      const votesMpk = document.getElementById("admin-votes-mpk-container");
+      if (votesOsis) {
+        votesOsis.innerHTML = candidatesOSIS.map(c => `
+          <div class="bg-desert-950 p-3 rounded-2xl border border-desert-800 flex items-center justify-between gap-2">
+            <div class="min-w-0">
+              <span class="text-xs font-bold text-amber-300 truncate block">No. ${c.number}: ${c.leadName}</span>
+              <p class="text-[10px] text-desert-400">Calon Ketua OSIS</p>
+            </div>
+            <div class="flex items-center gap-1 shrink-0">
+              <button onclick="adminIncrement('osis', '${c.id}', -1)" class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-desert-800 hover:bg-desert-700 text-desert-200 font-bold text-sm flex items-center justify-center">-</button>
+              <input type="number" id="admin-vote-osis-${c.id}" value="${c.votes}" min="0" 
+                     class="w-14 sm:w-16 text-center bg-desert-900 border border-desert-700 rounded-lg py-1 text-xs sm:text-sm font-bold text-amber-300 focus:outline-none" />
+              <button onclick="adminIncrement('osis', '${c.id}', 1)" class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-desert-800 hover:bg-desert-700 text-desert-200 font-bold text-sm flex items-center justify-center">+</button>
+              <button onclick="adminIncrement('osis', '${c.id}', 5)" class="px-1.5 sm:px-2 h-7 sm:h-8 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/40 text-xs font-bold">+5</button>
+            </div>
+          </div>
+        `).join("");
+      }
+
+      if (votesMpk) {
+        votesMpk.innerHTML = candidatesMPK.map(c => `
+          <div class="bg-desert-950 p-3 rounded-2xl border border-desert-800 flex items-center justify-between gap-2">
+            <div class="min-w-0">
+              <span class="text-xs font-bold text-orange-300 truncate block">No. ${c.number}: ${c.leadName}</span>
+              <p class="text-[10px] text-desert-400">Calon Ketum MPK</p>
+            </div>
+            <div class="flex items-center gap-1 shrink-0">
+              <button onclick="adminIncrement('mpk', '${c.id}', -1)" class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-desert-800 hover:bg-desert-700 text-desert-200 font-bold text-sm flex items-center justify-center">-</button>
+              <input type="number" id="admin-vote-mpk-${c.id}" value="${c.votes}" min="0" 
+                     class="w-14 sm:w-16 text-center bg-desert-900 border border-desert-700 rounded-lg py-1 text-xs sm:text-sm font-bold text-orange-300 focus:outline-none" />
+              <button onclick="adminIncrement('mpk', '${c.id}', 1)" class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-desert-800 hover:bg-desert-700 text-desert-200 font-bold text-sm flex items-center justify-center">+</button>
+              <button onclick="adminIncrement('mpk', '${c.id}', 5)" class="px-1.5 sm:px-2 h-7 sm:h-8 rounded-lg bg-orange-500/20 text-orange-300 border border-orange-500/40 text-xs font-bold">+5</button>
+            </div>
+          </div>
+        `).join("");
+      }
+
+      const mediaOsis = document.getElementById("admin-media-osis-container");
+      const mediaMpk = document.getElementById("admin-media-mpk-container");
+      if (mediaOsis) {
+        mediaOsis.innerHTML = candidatesOSIS.map(c => `
+          <div class="bg-desert-950 p-3.5 sm:p-5 rounded-2xl border border-desert-800 space-y-3">
+            <div class="flex items-center justify-between pb-2 border-b border-desert-850">
+              <span class="text-xs font-bold text-amber-300 flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded-lg bg-gradient-to-r from-amber-500 via-amber-400 to-orange-500 text-desert-950 text-[10px] font-western font-black shadow-sm">NO ${c.number}</span>
+                <span class="truncate">${c.leadName}</span>
+              </span>
+              <span class="text-[10px] text-desert-400 font-mono">Calon Ketua OSIS</span>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-1.5 sm:gap-2 sm:items-center">
+              <span class="text-xs text-desert-400 sm:w-28 shrink-0">Slogan Kampanye:</span>
+              <input type="text" id="media-osis-slogan-${c.id}" value="${c.tagline || ''}" placeholder="Satu Suara, Satu Pilihan..." 
+                     class="flex-1 bg-desert-900 border border-desert-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-400 font-sans" />
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-1.5 sm:gap-2 sm:items-center">
+              <span class="text-xs text-desert-400 sm:w-28 shrink-0">URL Poster Foto:</span>
+              <input type="url" id="media-osis-poster-${c.id}" value="${c.posterUrl || ''}" placeholder="https://i.postimg.cc/.../foto.jpg" 
+                     class="flex-1 bg-desert-900 border border-desert-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-400 font-mono" />
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-1.5 sm:gap-2 sm:items-center">
+              <span class="text-xs text-desert-400 sm:w-28 shrink-0">URL YouTube:</span>
+              <input type="url" id="media-osis-yt-${c.id}" value="${c.youtubeUrl || ''}" placeholder="https://www.youtube.com/watch?v=..." 
+                     class="flex-1 bg-desert-900 border border-desert-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-400 font-mono" />
+              <button onclick="openYoutubePlayer(document.getElementById('media-osis-yt-${c.id}').value, 'Test No. ${c.number}')" class="w-full sm:w-auto px-3 py-1.5 bg-red-950 text-red-400 border border-red-800/60 rounded-lg text-xs shrink-0">Test Video</button>
+            </div>
+
+            <div class="space-y-1">
+              <label class="text-[11px] font-bold text-amber-400/90 flex items-center gap-1.5">
+                <i data-lucide="compass" class="w-3.5 h-3.5"></i> Visi Kandidat:
+              </label>
+              <textarea id="media-osis-visi-${c.id}" rows="3" placeholder="Masukkan visi kandidat..." 
+                        class="w-full bg-desert-900 border border-desert-700 rounded-xl p-2.5 text-xs text-white focus:border-amber-400 focus:outline-none leading-relaxed">${c.visi || ''}</textarea>
+            </div>
+
+            <div class="space-y-1">
+              <div class="flex justify-between items-center">
+                <label class="text-[11px] font-bold text-amber-400/90 flex items-center gap-1.5">
+                  <i data-lucide="list-checks" class="w-3.5 h-3.5"></i> Misi Kandidat:
+                </label>
+                <span class="text-[10px] text-desert-400 italic">Tekan Enter untuk baris baru</span>
+              </div>
+              <textarea id="media-osis-misi-${c.id}" rows="4" placeholder="Poin 1&#10;Poin 2&#10;Poin 3..." 
+                        class="w-full bg-desert-900 border border-desert-700 rounded-xl p-2.5 text-xs text-white focus:border-amber-400 focus:outline-none font-sans leading-relaxed">${(c.misi || []).join('\n')}</textarea>
+            </div>
+          </div>
+        `).join("");
+      }
+
+      if (mediaMpk) {
+        mediaMpk.innerHTML = candidatesMPK.map(c => `
+          <div class="bg-desert-950 p-3.5 sm:p-5 rounded-2xl border border-desert-800 space-y-3">
+            <div class="flex items-center justify-between pb-2 border-b border-desert-850">
+              <span class="text-xs font-bold text-orange-300 flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded-lg bg-gradient-to-r from-amber-500 via-amber-400 to-orange-500 text-desert-950 text-[10px] font-western font-black shadow-sm">NO ${c.number}</span>
+                <span class="truncate">${c.leadName}</span>
+              </span>
+              <span class="text-[10px] text-desert-400 font-mono">Calon Ketua Umum MPK</span>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-1.5 sm:gap-2 sm:items-center">
+              <span class="text-xs text-desert-400 sm:w-28 shrink-0">Slogan Kampanye:</span>
+              <input type="text" id="media-mpk-slogan-${c.id}" value="${c.tagline || ''}" placeholder="Your Voice, Your Choice..." 
+                     class="flex-1 bg-desert-900 border border-desert-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-orange-400 font-sans" />
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-1.5 sm:gap-2 sm:items-center">
+              <span class="text-xs text-desert-400 sm:w-28 shrink-0">URL Poster Foto:</span>
+              <input type="url" id="media-mpk-poster-${c.id}" value="${c.posterUrl || ''}" placeholder="https://i.postimg.cc/.../foto.jpg" 
+                     class="flex-1 bg-desert-900 border border-desert-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-orange-400 font-mono" />
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-1.5 sm:gap-2 sm:items-center">
+              <span class="text-xs text-desert-400 sm:w-28 shrink-0">URL YouTube:</span>
+              <input type="url" id="media-mpk-yt-${c.id}" value="${c.youtubeUrl || ''}" placeholder="https://www.youtube.com/watch?v=..." 
+                     class="flex-1 bg-desert-900 border border-desert-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-orange-400 font-mono" />
+              <button onclick="openYoutubePlayer(document.getElementById('media-mpk-yt-${c.id}').value, 'Test No. ${c.number}')" class="w-full sm:w-auto px-3 py-1.5 bg-red-950 text-red-400 border border-red-800/60 rounded-lg text-xs shrink-0">Test Video</button>
+            </div>
+
+            <div class="space-y-1">
+              <label class="text-[11px] font-bold text-orange-400/90 flex items-center gap-1.5">
+                <i data-lucide="compass" class="w-3.5 h-3.5"></i> Visi Kandidat:
+              </label>
+              <textarea id="media-mpk-visi-${c.id}" rows="3" placeholder="Masukkan visi kandidat..." 
+                        class="w-full bg-desert-900 border border-desert-700 rounded-xl p-2.5 text-xs text-white focus:border-orange-400 focus:outline-none leading-relaxed">${c.visi || ''}</textarea>
+            </div>
+
+            <div class="space-y-1">
+              <div class="flex justify-between items-center">
+                <label class="text-[11px] font-bold text-orange-400/90 flex items-center gap-1.5">
+                  <i data-lucide="list-checks" class="w-3.5 h-3.5"></i> Misi Kandidat:
+                </label>
+                <span class="text-[10px] text-desert-400 italic">Tekan Enter untuk baris baru</span>
+              </div>
+              <textarea id="media-mpk-misi-${c.id}" rows="4" placeholder="Poin 1&#10;Poin 2&#10;Poin 3..." 
+                        class="w-full bg-desert-900 border border-desert-700 rounded-xl p-2.5 text-xs text-white focus:border-orange-400 focus:outline-none font-sans leading-relaxed">${(c.misi || []).join('\n')}</textarea>
+            </div>
+          </div>
+        `).join("");
+      }
+    }
+
+    function adminIncrement(cat, id, delta) {
+      const el = document.getElementById(`admin-vote-${cat}-${id}`);
+      if (el) el.value = Math.max(0, parseInt(el.value || 0) + delta);
+    }
+
+    function renderLogs() {
+      const box = document.getElementById("page-admin-logs");
+      if (box) {
+        box.innerHTML = voteLogs.slice(0, 10).map(l => `
+          <div class="flex items-start gap-2">
+            <span class="text-amber-500 font-bold shrink-0">[${l.time}]</span>
+            <span>${l.text}</span>
+          </div>
+        `).join("");
+      }
+    }
+
+    function openCustomPoster(url, title) {
+      const modal = document.getElementById("poster-modal");
+      const content = document.getElementById("poster-modal-content");
+      content.innerHTML = `
+        <div class="w-full p-2.5 border-b border-desert-800 flex justify-between items-center text-xs bg-desert-950">
+          <span class="font-bold text-amber-300 truncate mr-2">${title}</span>
+          <span class="text-[10px] bg-amber-500 text-desert-950 font-bold px-2 py-0.5 rounded shrink-0">SMAN 80</span>
+        </div>
+        <div class="w-full max-h-[80vh] overflow-hidden flex items-center justify-center p-0 bg-black">
+          <img src="${url}" alt="${title}" class="w-full h-full max-h-[78vh] object-contain" onerror="this.onerror=null; this.src='https://placehold.co/600x800/211309/f59e0b?text=Poster';" />
+        </div>
+      `;
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+      lucide.createIcons();
+    }
+
+    function openPosterModal() {
+      const targetPoster = (customMainPoster && customMainPoster.trim() !== "") ? customMainPoster : DEFAULT_MAIN_POSTER;
+      openCustomPoster(targetPoster, "Poster Digital NEXORA 2026");
+    }
+
+    function closePosterModal() {
+      const modal = document.getElementById("poster-modal");
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+    }
+
+    function openYoutubePlayer(url, title) {
+      const modal = document.getElementById("youtube-modal");
+      const iframe = document.getElementById("yt-modal-iframe");
+      const titleEl = document.getElementById("yt-modal-title");
+      if (titleEl) titleEl.innerText = title || "Video Orasi YouTube";
+      if (iframe) iframe.src = getYoutubeEmbedUrl(url, true);
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+      lucide.createIcons();
+    }
+
+    function closeYoutubeModal() {
+      const modal = document.getElementById("youtube-modal");
+      const iframe = document.getElementById("yt-modal-iframe");
+      iframe.src = "";
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+    }
+
+    function openCandidateModal(cat, id) {
+      const list = cat === 'osis' ? candidatesOSIS : candidatesMPK;
+      const c = list.find(item => item.id === id);
+      if (!c) return;
+
+      document.getElementById("modal-candidate-badge").innerText = `NO ${c.number}`;
+      document.getElementById("modal-candidate-name").innerText = c.leadName + (c.viceName ? ` & ${c.viceName}` : '');
+      document.getElementById("modal-candidate-visi").innerText = c.visi;
+      document.getElementById("modal-candidate-misi").innerHTML = c.misi.map(m => `<li>${m}</li>`).join("");
+
+      document.getElementById("candidate-modal").classList.remove("hidden");
+      document.getElementById("candidate-modal").classList.add("flex");
+      lucide.createIcons();
+    }
+
+    function closeCandidateModal() {
+      document.getElementById("candidate-modal").classList.add("hidden");
+      document.getElementById("candidate-modal").classList.remove("flex");
+    }
+
+    function copyPosterLink() {
+      const dummy = document.createElement("input");
+      dummy.value = window.location.href;
+      document.body.appendChild(dummy);
+      dummy.select();
+      document.execCommand("copy");
+      document.body.removeChild(dummy);
+      showToast("Tautan web Pemilihan Ketua OSIS dan MPK NEXORA disalin!", "success");
+    }
+
+    function showToast(message, type = "info") {
+      const container = document.getElementById("toast-container");
+      const toast = document.createElement("div");
+      const colors = {
+        success: "bg-emerald-950 border-emerald-500/60 text-emerald-200",
+        error: "bg-red-950 border-red-500/60 text-red-200",
+        info: "bg-desert-900 border-amber-500/60 text-amber-200"
+      };
+      toast.className = `flex items-center gap-2 px-3.5 py-2.5 rounded-xl sm:rounded-2xl border text-xs shadow-2xl backdrop-blur-md pointer-events-auto transform transition-all duration-300 translate-y-2 opacity-0 ${colors[type] || colors.info}`;
+      toast.innerHTML = `<span class="w-2 h-2 rounded-full shrink-0 ${type === 'success' ? 'bg-emerald-400' : (type === 'error' ? 'bg-red-400' : 'bg-amber-400')}"></span><span>${message}</span>`;
+      container.appendChild(toast);
+      requestAnimationFrame(() => toast.classList.remove("translate-y-2", "opacity-0"));
+      setTimeout(() => {
+        toast.classList.add("translate-y-2", "opacity-0");
+        setTimeout(() => toast.remove(), 300);
+      }, 3500);
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      initData();
+    });
+  </script>
+</body>
+</html>
